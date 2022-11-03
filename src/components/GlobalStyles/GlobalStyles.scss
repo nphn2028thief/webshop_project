@@ -45,11 +45,11 @@ a {
 }
 
 input,
-button {
+button,
+[tabindex] {
     border: none;
     outline: none;
     font-family: $font-family;
-    background-color: transparent;
 }
 
 .container {

@@ -67,6 +67,9 @@ function Header() {
                         <Button className={cx('login-btn')} primary onClick={handleLogin}>
                             Đăng nhập
                         </Button>
+                        // <Button className={cx('login-btn')} outline>
+                        //     Đăng ký
+                        // </Button>
                     )}
                 </div>
             </div>

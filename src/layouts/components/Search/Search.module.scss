@@ -44,6 +44,7 @@
     .clear {
         display: flex;
         padding: 8px;
+        background-color: transparent;
 
         @include tablet {
             right: 2px;
