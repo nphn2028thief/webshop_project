@@ -73,7 +73,7 @@ function MobileMenu() {
                         </div>
                     ) : (
                         <div className={cx('menu')}>
-                            <button to="/cart" className={cx('menu-item')} onClick={handleLogin}>
+                            <button className={cx('menu-item')} onClick={handleLogin}>
                                 <FiLogIn size="20" />
                                 Đăng nhập
                             </button>
@@ -95,7 +95,7 @@ function MobileMenu() {
 
                     {isLogin && (
                         <div className={cx('menu')}>
-                            <button to="/cart" className={cx('menu-item')} onClick={handleLogout}>
+                            <button className={cx('menu-item')} onClick={handleLogout}>
                                 <FiLogOut size="20" />
                                 Đăng xuất
                             </button>
