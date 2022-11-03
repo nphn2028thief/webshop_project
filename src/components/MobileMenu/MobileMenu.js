@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { FiLogOut } from 'react-icons/fi';
 import { BiShoppingBag } from 'react-icons/bi';
@@ -14,6 +14,10 @@ function MobileMenu() {
     const [count, setCount] = useState(100);
     const [width, setWidth] = useState(window.innerWidth);
     const inputRef = useRef();
+    const contentRef = useRef();
+    const { pathname } = useLocation();
+
+    const active = navMenus.findIndex((e) => e.to === pathname);
 
     useEffect(() => {
         const handleResize = () => {
@@ -45,7 +49,7 @@ function MobileMenu() {
 
             <label htmlFor={styles['mobile-menu-input']} className={cx('overlay')}></label>
 
-            <div className={cx('content')}>
+            <div ref={contentRef} className={cx('content')}>
                 <div className={cx('info')}>
                     <Image src="" className={cx('avatar')} alt="avatar" />
                     <h6 className={cx('name')}>Nguyễn Nhân</h6>
@@ -61,7 +65,11 @@ function MobileMenu() {
 
                     <div className={cx('menu')}>
                         {navMenus.map((navMenu) => (
-                            <Link key={navMenu.id} to={navMenu.to} className={cx('menu-item')}>
+                            <Link
+                                key={navMenu.id}
+                                to={navMenu.to}
+                                className={navMenu.id === active + 1 ? cx('menu-item', 'active') : cx('menu-item')}
+                            >
                                 {navMenu.icon}
                                 {navMenu.name}
                             </Link>

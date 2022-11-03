@@ -46,6 +46,10 @@
     }
 }
 
+.active {
+    color: $blue;
+}
+
 .content {
     @include flex(unset, unset, column, unset);
 
@@ -118,7 +122,7 @@
         font-size: 1.6rem;
 
         &:hover {
-            background-color: #f0f0f0;
+            background-color: rgba(66, 103, 178, 0.2);
         }
     }
 }
