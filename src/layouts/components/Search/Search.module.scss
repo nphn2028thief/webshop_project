@@ -4,7 +4,6 @@
     width: 240px;
     position: relative;
     margin-right: 20px;
-    z-index: 99;
 
     @include tablet {
         width: 50%;
@@ -22,6 +21,10 @@
         font-size: 1.4rem;
         border: 1px solid #ccc;
         border-radius: 30px;
+
+        &:focus {
+            border-color: $black;
+        }
 
         @include tablet {
             padding-right: 44px;
