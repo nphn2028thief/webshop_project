@@ -11,6 +11,7 @@
 
 html {
     font-size: 62.5%;
+    -webkit-appearance: none;
 }
 
 body {
@@ -40,7 +41,7 @@ ul {
 
 a {
     text-decoration: none;
-    color: unset;
+    color: $black;
 }
 
 input,

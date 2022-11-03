@@ -5,6 +5,7 @@ import MobileMenu from '~/components/MobileMenu';
 import { navMenus } from '~/data';
 import Search from '../Search';
 import Logo from '~/components/Logo';
+import Image from '~/components/Image';
 
 const cx = classNames.bind(styles);
 
@@ -30,10 +31,12 @@ function Header() {
                     <div className={cx('action-item')}>
                         <Link to="/cart" className={cx('action-icon')}>
                             <i className="bx bx-shopping-bag"></i>
+                            <span className={cx('count-cart')}>99+</span>
                         </Link>
                     </div>
+
                     <div className={cx('action-item')}>
-                        <i className={cx('bx bx-user-circle', 'action-icon')}></i>
+                        <Image src="" className={cx('avatar')} alt="avatar" />
                     </div>
                 </div>
             </div>

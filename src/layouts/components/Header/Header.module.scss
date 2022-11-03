@@ -15,6 +15,11 @@
 
 .header-container {
     @include flex(space-between, center, unset, unset);
+    @include tablet {
+        display: grid;
+        grid-template-columns: 1fr 15fr;
+        column-gap: 2rem;
+    }
     @include mobile {
         justify-content: center;
     }
@@ -40,6 +45,10 @@
         bottom: 0;
         left: 50%;
         transform: translate(-50%, 0);
+
+        @include tablet {
+            display: none;
+        }
     }
 }
 
@@ -61,7 +70,28 @@
 
         .action-icon {
             display: flex;
-            font-size: 2.4rem;
+            font-size: 2.6rem;
+            position: relative;
+
+            .count-cart {
+                @include flex(center, center, unset, unset);
+
+                width: 16px;
+                height: 16px;
+                position: absolute;
+                top: -2px;
+                right: -4px;
+                color: $white;
+                background-color: red;
+                font-size: 0.7rem;
+                border-radius: 50%;
+            }
         }
+    }
+
+    .avatar {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
     }
 }

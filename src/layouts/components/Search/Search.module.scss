@@ -1,21 +1,31 @@
 @use '../../../scss/' as *;
 
 .wrapper {
-    min-width: 240px;
+    width: 240px;
     position: relative;
-    border: 1px solid #ccc;
-    border-radius: 4px;
     margin-right: 20px;
     z-index: 99;
 
     @include tablet {
+        width: 50%;
         margin-right: 0;
+    }
+
+    @include mobile {
+        width: 100%;
+        margin-right: 14px;
     }
 
     .search-input {
         width: 100%;
-        padding: 12px 28px 12px 16px;
+        padding: 12px 36px 12px 16px;
         font-size: 1.4rem;
+        border: 1px solid #ccc;
+        border-radius: 30px;
+
+        @include tablet {
+            padding-right: 44px;
+        }
     }
 
     .action-icon {
