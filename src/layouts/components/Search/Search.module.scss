@@ -32,37 +32,45 @@
         }
     }
 
-    .action-icon {
-        display: inline-flex;
+    .clear,
+    .loading {
         position: absolute;
         top: 50%;
         right: 0;
-        transform: translate(0, -50%);
+        transform: translateY(-50%);
+        font-size: 2rem;
+    }
 
-        .icon {
-            padding: 8px;
-            font-size: 2rem;
+    .clear {
+        display: flex;
+        padding: 8px;
+
+        @include tablet {
+            right: 2px;
         }
 
-        .icon-loading {
-            animation: spinner 0.8s linear infinite;
+        &:hover {
+            cursor: pointer;
+            opacity: 0.6;
+        }
+    }
+
+    .loading {
+        right: 8px;
+        animation: spinner 0.8s linear infinite;
+
+        @include tablet {
+            right: 10px;
+        }
+    }
+
+    @keyframes spinner {
+        from {
+            transform: translateY(-50%) rotate(0);
         }
 
-        .icon-remove {
-            &:hover {
-                cursor: pointer;
-                opacity: 0.6;
-            }
-        }
-
-        @keyframes spinner {
-            from {
-                transform: rotate(0);
-            }
-
-            to {
-                transform: rotate(360deg);
-            }
+        to {
+            transform: translateY(-50%) rotate(360deg);
         }
     }
 }

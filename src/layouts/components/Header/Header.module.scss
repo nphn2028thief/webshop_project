@@ -59,6 +59,9 @@
 
 .actions {
     @include flex(unset, center, unset, 0.7rem);
+    @include tablet {
+        justify-content: space-between;
+    }
 
     .action-item {
         @include flex(unset, center, unset, 0.4rem);
@@ -102,5 +105,11 @@
         width: 28px;
         height: 28px;
         border-radius: 50%;
+    }
+
+    @include mobile {
+        .login-btn {
+            display: none;
+        }
     }
 }

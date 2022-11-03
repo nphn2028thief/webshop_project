@@ -54,12 +54,14 @@ function Search() {
                 value={searchValue}
                 onChange={(e) => handleChange(e)}
             />
-            <div className={cx('action-icon')}>
-                {!!searchValue && !loading && (
-                    <i className={cx('bx bx-x', 'icon', 'icon-remove')} onClick={handleClear}></i>
-                )}
-                {loading && <i className={cx('bx bx-loader-alt', 'icon', 'icon-loading')}></i>}
-            </div>
+
+            {!!searchValue && !loading && (
+                <button className={cx('clear')} onClick={handleClear}>
+                    <i className={cx('bx bx-x')}></i>
+                </button>
+            )}
+
+            {loading && <i className={cx('bx bx-loader-alt', 'loading')}></i>}
         </div>
     );
 }

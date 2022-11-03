@@ -1,23 +1,27 @@
 import { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames/bind';
-import { FiLogOut } from 'react-icons/fi';
+import { FiLogIn, FiLogOut } from 'react-icons/fi';
 import { BiShoppingBag } from 'react-icons/bi';
 
 import { navMenus } from '~/data';
 import styles from './MobileMenu.module.scss';
 import Image from '../Image';
+import { useStore } from '~/hooks';
+import { setIsLogin } from '~/store/actions';
 
 const cx = classNames.bind(styles);
 
 function MobileMenu() {
-    const [count, setCount] = useState(100);
     const [width, setWidth] = useState(window.innerWidth);
     const inputRef = useRef();
     const contentRef = useRef();
     const { pathname } = useLocation();
 
     const active = navMenus.findIndex((e) => e.to === pathname);
+
+    const [state, dispatch] = useStore();
+    const { isLogin, countProductInCart } = state;
 
     useEffect(() => {
         const handleResize = () => {
@@ -33,11 +37,13 @@ function MobileMenu() {
         return () => window.removeEventListener('resize', handleResize);
     }, [width]);
 
-    useEffect(() => {
-        if (count > 99) {
-            setCount(`${99}+`);
-        }
-    }, [count]);
+    const handleLogin = () => {
+        dispatch(setIsLogin(true));
+    };
+
+    const handleLogout = () => {
+        dispatch(setIsLogin(false));
+    };
 
     return (
         <>
@@ -50,18 +56,29 @@ function MobileMenu() {
             <label htmlFor={styles['mobile-menu-input']} className={cx('overlay')}></label>
 
             <div ref={contentRef} className={cx('content')}>
-                <div className={cx('info')}>
-                    <Image src="" className={cx('avatar')} alt="avatar" />
-                    <h6 className={cx('name')}>Nguyễn Nhân</h6>
-                </div>
+                {isLogin && (
+                    <div className={cx('info')}>
+                        <Image src="" className={cx('avatar')} alt="avatar" />
+                        <h6 className={cx('name')}>Nguyễn Nhân</h6>
+                    </div>
+                )}
 
                 <div className={cx('menu-list-wrap')}>
-                    <div className={cx('menu')}>
-                        <Link to="/cart" className={cx('menu-item')}>
-                            <BiShoppingBag size="20" />
-                            Giỏ hàng của tôi ({count})
-                        </Link>
-                    </div>
+                    {isLogin ? (
+                        <div className={cx('menu')}>
+                            <Link to="/cart" className={cx('menu-item')}>
+                                <BiShoppingBag size="20" />
+                                Giỏ hàng của tôi ({countProductInCart})
+                            </Link>
+                        </div>
+                    ) : (
+                        <div className={cx('menu')}>
+                            <button to="/cart" className={cx('menu-item')} onClick={handleLogin}>
+                                <FiLogIn size="20" />
+                                Đăng nhập
+                            </button>
+                        </div>
+                    )}
 
                     <div className={cx('menu')}>
                         {navMenus.map((navMenu) => (
@@ -76,12 +93,14 @@ function MobileMenu() {
                         ))}
                     </div>
 
-                    <div className={cx('menu')}>
-                        <button to="/cart" className={cx('menu-item')}>
-                            <FiLogOut size="20" />
-                            Đăng xuất
-                        </button>
-                    </div>
+                    {isLogin && (
+                        <div className={cx('menu')}>
+                            <button to="/cart" className={cx('menu-item')} onClick={handleLogout}>
+                                <FiLogOut size="20" />
+                                Đăng xuất
+                            </button>
+                        </div>
+                    )}
                 </div>
             </div>
         </>

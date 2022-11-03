@@ -4,10 +4,10 @@
     @include flex(center, center, unset, 1.4rem);
 
     font-size: 1.6rem;
-    font-weight: 600;
+    font-weight: 500;
     font-family: $font-family;
-    min-width: 100px;
-    padding: 8px 16px;
+    min-width: 124px;
+    padding: 6px 28px;
     border-radius: 30px;
     cursor: pointer;
     background-color: $white;
@@ -21,9 +21,23 @@
 
 /* Button Type */
 .primary {
+    background-color: $blue;
+    color: $white;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+        opacity: 0.7;
+    }
 }
 
 .outline {
+    border: 1px solid $blue;
+    color: $blue;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: rgba(66, 103, 178, 0.05);
+    }
 }
 
 .rounded {

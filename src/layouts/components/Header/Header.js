@@ -8,6 +8,10 @@ import { navMenus } from '~/data';
 import Search from '../Search';
 import Logo from '~/components/Logo';
 import Image from '~/components/Image';
+import { useStore } from '~/hooks';
+import { actions } from '~/store';
+import Button from '~/components/Button';
+import { setIsLogin } from '~/store/actions';
 
 const cx = classNames.bind(styles);
 
@@ -16,6 +20,13 @@ function Header() {
     const headerRef = useRef();
 
     const active = navMenus.findIndex((e) => e.to === pathname);
+
+    const [state, dispatch] = useStore();
+    const { isLogin, countProductInCart } = state;
+
+    const handleLogin = () => {
+        dispatch(setIsLogin(true));
+    };
 
     return (
         <div ref={headerRef} className={cx('wrapper')}>
@@ -39,16 +50,24 @@ function Header() {
                 <div className={cx('actions')}>
                     <Search />
 
-                    <div className={cx('action-item')}>
-                        <Link to="/cart" className={cx('action-icon')}>
-                            <i className="bx bx-shopping-bag"></i>
-                            <span className={cx('count-cart')}>99+</span>
-                        </Link>
-                    </div>
+                    {isLogin ? (
+                        <>
+                            <div className={cx('action-item')}>
+                                <Link to="/cart" className={cx('action-icon')}>
+                                    <i className="bx bx-shopping-bag"></i>
+                                    <span className={cx('count-cart')}>{countProductInCart}</span>
+                                </Link>
+                            </div>
 
-                    <div className={cx('action-item')}>
-                        <Image src="" className={cx('avatar')} alt="avatar" />
-                    </div>
+                            <div className={cx('action-item')}>
+                                <Image src="" className={cx('avatar')} alt="avatar" />
+                            </div>
+                        </>
+                    ) : (
+                        <Button className={cx('login-btn')} primary onClick={handleLogin}>
+                            Đăng nhập
+                        </Button>
+                    )}
                 </div>
             </div>
         </div>

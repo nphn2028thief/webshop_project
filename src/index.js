@@ -4,12 +4,15 @@ import App from './App';
 import GlobalStyles from './components/GlobalStyles';
 import './assets/boxicons-2.0.7/css/boxicons.min.css';
 import reportWebVitals from './reportWebVitals';
+import { StoreProvider } from './store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <React.StrictMode>
         <GlobalStyles>
-            <App />
+            <StoreProvider>
+                <App />
+            </StoreProvider>
         </GlobalStyles>
     </React.StrictMode>,
 );
