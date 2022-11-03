@@ -1,0 +1,13 @@
+@use '../../scss/' as *;
+
+.wrapper {
+    @include flex(center, center, unset, unset);
+
+    @include mobile {
+        display: none;
+    }
+
+    img {
+        height: 28px;
+    }
+}

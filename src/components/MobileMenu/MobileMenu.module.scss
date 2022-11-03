@@ -1,0 +1,126 @@
+@use '../../scss/' as *;
+
+.menu-btn {
+    display: none;
+    font-size: 3.6rem;
+    padding: 10px 14px;
+
+    @include tablet {
+        display: inline-flex;
+    }
+
+    @include mobile {
+        position: absolute;
+        top: 50%;
+        transform: translate(0, -50%);
+        left: 8px;
+    }
+}
+
+#mobile-menu-input {
+    display: none;
+
+    &:checked {
+        ~ .overlay {
+            display: block;
+        }
+
+        ~ .content {
+            transform: translateX(0);
+        }
+    }
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    animation: fadeIn 0.3s linear;
+    z-index: 100;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+.content {
+    @include flex(unset, unset, column, unset);
+
+    width: 60%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    padding: 16px 0 0 32px;
+    background-color: $white;
+    transform: translateX(-100%);
+    transition: transform 0.3s linear;
+    overflow: auto;
+    z-index: 101;
+
+    @include mobile {
+        width: 80%;
+    }
+}
+
+.info {
+    @include flex(unset, unset, column, 1rem);
+    padding: 32px 0 32px 20px;
+
+    .avatar {
+        border-radius: 50%;
+        width: 96px;
+        height: 96px;
+    }
+
+    .name {
+        font-size: 1.6rem;
+        font-weight: 500;
+    }
+}
+
+.cart-link {
+    @include flex(unset, center, unset, 1.6rem);
+
+    padding: 20px 0 20px 20px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+    border-bottom: 1px solid #ccc;
+
+    &:hover {
+        background-color: #f0f0f0;
+    }
+}
+
+.menu {
+    @include flex(unset, unset, column, unset);
+    padding: 16px 0;
+    border-bottom: 1px solid #ccc;
+
+    &:last-child {
+        border-bottom: unset;
+    }
+
+    .menu-item {
+        @include flex(unset, center, unset, 1.4rem);
+
+        padding: 20px 0 20px 20px;
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+        font-size: 1.6rem;
+
+        &:hover {
+            background-color: #f0f0f0;
+        }
+    }
+}

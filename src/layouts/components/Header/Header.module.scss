@@ -1,0 +1,67 @@
+@use '../../../scss/' as *;
+
+.wrapper {
+    @include flex(unset, center, unset, unset);
+
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: $header-height;
+    background-color: $white;
+    box-shadow: $box-shadow;
+    z-index: 99;
+}
+
+.header-container {
+    @include flex(space-between, center, unset, unset);
+    @include mobile {
+        justify-content: center;
+    }
+
+    .menu {
+        @include flex(unset, center, unset, 0.7rem);
+        @include tablet {
+            display: none;
+        }
+
+        .menu-item {
+            padding: 16px 18px;
+
+            &:hover {
+                opacity: 0.6;
+            }
+        }
+    }
+
+    .logo {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        transform: translate(-50%, 0);
+    }
+}
+
+.actions {
+    @include flex(unset, center, unset, 0.7rem);
+
+    .action-item {
+        @include flex(unset, center, unset, 0.4rem);
+        @include tablet {
+            display: none;
+
+            &:first-child {
+                display: inline-flex;
+            }
+        }
+
+        padding: 8px 10px;
+        cursor: pointer;
+
+        .action-icon {
+            display: flex;
+            font-size: 2.4rem;
+        }
+    }
+}

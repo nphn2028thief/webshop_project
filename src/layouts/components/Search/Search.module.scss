@@ -1,0 +1,54 @@
+@use '../../../scss/' as *;
+
+.wrapper {
+    min-width: 240px;
+    position: relative;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-right: 20px;
+    z-index: 99;
+
+    @include tablet {
+        margin-right: 0;
+    }
+
+    .search-input {
+        width: 100%;
+        padding: 12px 28px 12px 16px;
+        font-size: 1.4rem;
+    }
+
+    .action-icon {
+        display: inline-flex;
+        position: absolute;
+        top: 50%;
+        right: 0;
+        transform: translate(0, -50%);
+
+        .icon {
+            padding: 8px;
+            font-size: 2rem;
+        }
+
+        .icon-loading {
+            animation: spinner 0.8s linear infinite;
+        }
+
+        .icon-remove {
+            &:hover {
+                cursor: pointer;
+                opacity: 0.6;
+            }
+        }
+
+        @keyframes spinner {
+            from {
+                transform: rotate(0);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    }
+}
