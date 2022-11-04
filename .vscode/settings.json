@@ -1,7 +1,4 @@
 {
-    "key": "ctrl+shift+i",
-    "command": "extension.wrapTag",
-    "when": "editorTextFocus",
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
 }

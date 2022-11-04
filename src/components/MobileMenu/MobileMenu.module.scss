@@ -46,10 +46,6 @@
     }
 }
 
-.active {
-    color: $blue;
-}
-
 .content {
     @include flex(unset, unset, column, unset);
 
@@ -126,5 +122,9 @@
         &:hover {
             background-color: rgba(66, 103, 178, 0.2);
         }
+    }
+
+    .active {
+        color: $blue;
     }
 }

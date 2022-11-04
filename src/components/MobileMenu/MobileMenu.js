@@ -43,6 +43,7 @@ function MobileMenu() {
 
     const handleLogout = () => {
         dispatch(setIsLogin(false));
+        inputRef.current.checked = false;
     };
 
     return (
@@ -66,7 +67,11 @@ function MobileMenu() {
                 <div className={cx('menu-list-wrap')}>
                     {isLogin ? (
                         <div className={cx('menu')}>
-                            <Link to="/cart" className={cx('menu-item')}>
+                            <Link
+                                to="/cart"
+                                className={cx('menu-item')}
+                                onClick={() => (inputRef.current.checked = false)}
+                            >
                                 <BiShoppingBag size="20" />
                                 Giỏ hàng của tôi ({countProductInCart})
                             </Link>
@@ -86,6 +91,7 @@ function MobileMenu() {
                                 key={navMenu.id}
                                 to={navMenu.to}
                                 className={navMenu.id === active + 1 ? cx('menu-item', 'active') : cx('menu-item')}
+                                onClick={() => (inputRef.current.checked = false)}
                             >
                                 {navMenu.icon}
                                 {navMenu.name}

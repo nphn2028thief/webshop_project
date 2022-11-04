@@ -9,7 +9,6 @@ import Search from '../Search';
 import Logo from '~/components/Logo';
 import Image from '~/components/Image';
 import { useStore } from '~/hooks';
-import { actions } from '~/store';
 import Button from '~/components/Button';
 import { setIsLogin } from '~/store/actions';
 
