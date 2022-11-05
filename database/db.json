@@ -35,5 +35,28 @@
             "oldPrice": "399,000",
             "newPrice": "194,000"
         }
+    ],
+    "carts": [
+        {
+            "id": 1,
+            "image": "",
+            "name": "Áo thun Dinosaur 01",
+            "price": "189,000",
+            "amount": 2
+        },
+        {
+            "id": 2,
+            "image": "",
+            "name": "Áo thun Dinosaur 02",
+            "price": "159,000",
+            "amount": 5
+        },
+        {
+            "id": 3,
+            "image": "",
+            "name": "Áo thun Dinosaur 03",
+            "price": "190,000",
+            "amount": 1
+        }
     ]
 }

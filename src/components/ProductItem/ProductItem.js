@@ -12,10 +12,10 @@ function ProductItem({ data, amount }) {
             <div className={cx('info')}>
                 <h4 className={cx('name')}>{data.name}</h4>
                 <div className={cx('price')}>
-                    <span className={cx('new-price')}>₫{data.newPrice}</span>
-                    <span className={cx('old-price')}>₫{data.oldPrice}</span>
+                    <span className={cx('new-price')}>₫{data.newPrice || data.price}</span>
+                    {data.oldPrice && <span className={cx('old-price')}>₫{data.oldPrice}</span>}
                 </div>
-                {amount && <span className={cx('amount')}>{amount}</span>}
+                {data.amount && <span className={cx('amount')}>Số lượng: {data.amount}</span>}
             </div>
         </Link>
     );

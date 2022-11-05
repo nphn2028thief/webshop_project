@@ -1,8 +1,8 @@
 @use '../../../scss/' as *;
 
 .wrapper {
-    width: 270px;
-    margin-right: 20px;
+    width: $search-width;
+    margin-right: 16px;
     position: relative;
 
     @include tablet {
@@ -81,7 +81,6 @@
     width: 100%;
     position: absolute;
     margin-top: 8px;
-    z-index: 999;
 
     .search-title {
         font-size: 1.4rem;
