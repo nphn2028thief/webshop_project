@@ -28,17 +28,23 @@ function Search() {
             setLoading(true);
         }
 
-        fetch('http://localhost:3001/products')
-            .then((res) => res.json())
-            .then((products) => {
-                setSearchResult(products);
-                setLoading(false);
-            })
-            .catch((err) => {
-                console.log(err);
-                setLoading(false);
-            })
-            .finally(() => setLoading(false));
+        // fetch('http://localhost:3001/products')
+        //     .then((res) => res.json())
+        //     .then((products) => {
+        //         setSearchResult(products);
+        //         setLoading(false);
+        //     })
+        //     .catch((err) => {
+        //         console.log(err);
+        //         setLoading(false);
+        //     })
+        //     .finally(() => setLoading(false));
+
+        timeId.current = setTimeout(() => {
+            setLoading(false);
+        }, 2000);
+
+        return () => clearTimeout(timeId.current);
     }, [debouncedValue]);
 
     const handleChange = (e) => {
