@@ -85,7 +85,7 @@ function Header() {
                             </div>
                         </>
                     ) : (
-                        <Button className={cx('login-btn')} primary onClick={handleLogin}>
+                        <Button className={cx('login-btn')} unique onClick={handleLogin}>
                             Đăng nhập
                         </Button>
                         // <Button className={cx('login-btn')} outline>

@@ -10,6 +10,7 @@ function Button({
     href,
     className,
     primary = false,
+    unique = false,
     outline = false,
     rounded = false,
     small = false,
@@ -35,6 +36,7 @@ function Button({
     const classes = cx('wrapper', {
         [className]: className,
         primary,
+        unique,
         outline,
         rounded,
         small,
