@@ -13,7 +13,7 @@ function Search() {
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [showResult, setShowResult] = useState(false);
+    const [showResult, setShowResult] = useState(true);
     const timeId = useRef();
 
     const debouncedValue = useDebounced(searchValue, 1000);
@@ -108,8 +108,8 @@ function Search() {
                 placeholder="Tìm kiếm sản phẩm ở đây!"
                 value={searchValue}
                 onChange={(e) => handleChange(e)}
-                onFocus={() => setShowResult(true)}
-                onBlur={() => setShowResult(false)}
+                // onFocus={() => setShowResult(true)}
+                // onBlur={() => setShowResult(false)}
             />
 
             {!!searchValue && !loading && (

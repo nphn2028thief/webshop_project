@@ -20,6 +20,14 @@
         }
     }
 
+    @include mobile {
+        gap: 0;
+
+        .image + .info {
+            margin-left: 1rem;
+        }
+    }
+
     .name {
         display: -webkit-box;
         -webkit-box-orient: vertical;
