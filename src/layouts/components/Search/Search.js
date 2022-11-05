@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames/bind';
-import Tippy from '@tippyjs/react/headless';
 
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import styles from './Search.module.scss';
 import { useDebounced } from '~/hooks';
+import ProductItem from '~/components/ProductItem';
 
 const cx = classNames.bind(styles);
 
@@ -13,25 +13,32 @@ function Search() {
     const [searchValue, setSearchValue] = useState('');
     const [searchResult, setSearchResult] = useState([]);
     const [loading, setLoading] = useState(false);
+    const [showResult, setShowResult] = useState(false);
     const timeId = useRef();
 
     const debouncedValue = useDebounced(searchValue, 1000);
 
     useEffect(() => {
-        // if (!debouncedValue.trim()) {
-        //     setSearchResult([]);
-        //     return;
-        // }
+        if (!debouncedValue.trim()) {
+            setSearchResult([]);
+            return;
+        }
 
         if (debouncedValue.trim()) {
             setLoading(true);
         }
 
-        timeId.current = setInterval(() => {
-            setLoading(false);
-        }, 1000);
-
-        return () => clearInterval(timeId.current);
+        fetch('http://localhost:3001/products')
+            .then((res) => res.json())
+            .then((products) => {
+                setSearchResult(products);
+                setLoading(false);
+            })
+            .catch((err) => {
+                console.log(err);
+                setLoading(false);
+            })
+            .finally(() => setLoading(false));
     }, [debouncedValue]);
 
     const handleChange = (e) => {
@@ -45,53 +52,42 @@ function Search() {
 
     const handleClear = () => {
         setSearchValue('');
+        setSearchResult([]);
         inputRef.current.focus();
     };
 
-    useEffect(() => {
-        setTimeout(() => {
-            setSearchResult([1, 2, 3, 4, 5, 6, 7]);
-        }, 0);
-    }, []);
-
     return (
-        <div className={cx('wrapper-tippy')}>
-            <Tippy
-                visible
-                interactive
-                placement="top-start"
-                render={(attrs) => (
-                    <div className={cx('search-result')} {...attrs}>
-                        <PopperWrapper>
-                            <h4 className={cx('search-title')}>Sản phẩm</h4>
-                        </PopperWrapper>
-                    </div>
-                )}
-            >
-                <div className={cx('wrapper')}>
-                    <input
-                        ref={inputRef}
-                        className={cx('search-input')}
-                        placeholder="Search Product here!"
-                        value={searchValue}
-                        onChange={(e) => handleChange(e)}
-                    />
+        <div className={cx('wrapper')}>
+            <input
+                ref={inputRef}
+                className={cx('search-input')}
+                placeholder="Tìm kiếm sản phẩm ở đây!"
+                value={searchValue}
+                onChange={(e) => handleChange(e)}
+                onFocus={() => setShowResult(true)}
+                onBlur={() => setShowResult(false)}
+            />
 
-                    {!!searchValue && !loading && (
-                        <button className={cx('clear')} onClick={handleClear}>
-                            <i className={cx('bx bx-x')}></i>
-                        </button>
-                    )}
+            {!!searchValue && !loading && (
+                <button className={cx('clear')} onClick={handleClear}>
+                    <i className={cx('bx bx-x')}></i>
+                </button>
+            )}
 
-                    {loading && <i className={cx('bx bx-loader-alt', 'loading')}></i>}
+            {loading && <i className={cx('bx bx-loader-alt', 'loading')}></i>}
 
-                    {/* <div className={cx('search-result')} tabIndex="-1">
-                <PopperWrapper>
-                    <h4 className={cx('search-title')}>Sản phẩm</h4>
-                </PopperWrapper>
-            </div> */}
+            {showResult && searchResult.length > 0 && (
+                <div className={cx('search-result')} tabIndex="-1">
+                    <PopperWrapper>
+                        <h4 className={cx('search-title')}>Sản phẩm</h4>
+                        <div className={cx('product-list')}>
+                            {searchResult.map((item) => (
+                                <ProductItem key={item.id} data={item} />
+                            ))}
+                        </div>
+                    </PopperWrapper>
                 </div>
-            </Tippy>
+            )}
         </div>
     );
 }

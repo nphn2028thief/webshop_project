@@ -1,0 +1,46 @@
+@use '../../scss/' as *;
+
+.product-item {
+    @include flex(unset, center, unset, 1rem);
+
+    padding: 6px 8px;
+
+    &:hover {
+        background-color: rgba(66, 103, 178, 0.2);
+    }
+
+    .image {
+        width: 28%;
+        height: 28%;
+        border-radius: 4px;
+
+        @include tablet {
+            width: 18%;
+            height: 18%;
+        }
+    }
+
+    .name {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+        font-size: 1.4rem;
+        font-weight: 600;
+    }
+
+    .price {
+        @include flex(unset, unset, unset, 1.2rem);
+
+        font-size: 1.4rem;
+
+        .new-price {
+            color: red;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            opacity: 0.5;
+        }
+    }
+}
