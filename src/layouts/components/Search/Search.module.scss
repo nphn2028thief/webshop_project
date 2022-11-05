@@ -44,6 +44,7 @@
     .clear {
         display: flex;
         padding: 8px;
+        color: $black;
         background-color: transparent;
 
         @include tablet {
@@ -53,6 +54,7 @@
         &:hover {
             cursor: pointer;
             opacity: 0.6;
+            background-color: transparent;
         }
     }
 

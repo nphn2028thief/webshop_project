@@ -44,6 +44,44 @@ function Search() {
             setLoading(false);
         }, 2000);
 
+        setSearchResult([
+            {
+                id: 1,
+                image: '',
+                name: 'Áo thun Dinosaur 01',
+                oldPrice: '399,000',
+                newPrice: '189,000',
+            },
+            {
+                id: 2,
+                image: '',
+                name: 'Áo thun Dinosaur 02',
+                oldPrice: '399,000',
+                newPrice: '159,000',
+            },
+            {
+                id: 3,
+                image: '',
+                name: 'Áo thun Dinosaur 03',
+                oldPrice: '399,000',
+                newPrice: '190,000',
+            },
+            {
+                id: 4,
+                image: '',
+                name: 'Áo thun Dinosaur 04',
+                oldPrice: '399,000',
+                newPrice: '194,000',
+            },
+            {
+                id: 5,
+                image: '',
+                name: 'Áo thun Dinosaur 05',
+                oldPrice: '399,000',
+                newPrice: '194,000',
+            },
+        ]);
+
         return () => clearTimeout(timeId.current);
     }, [debouncedValue]);
 
