@@ -14,7 +14,7 @@ function Search() {
     const [searchResult, setSearchResult] = useState([]);
     const [loading, setLoading] = useState(false);
     const [showResult, setShowResult] = useState(true);
-    const timeId = useRef();
+    // const timeId = useRef();
 
     const debouncedValue = useDebounced(searchValue, 1000);
 
@@ -28,61 +28,61 @@ function Search() {
             setLoading(true);
         }
 
-        // fetch('http://localhost:3001/products')
-        //     .then((res) => res.json())
-        //     .then((products) => {
-        //         setSearchResult(products);
-        //         setLoading(false);
-        //     })
-        //     .catch((err) => {
-        //         console.log(err);
-        //         setLoading(false);
-        //     })
-        //     .finally(() => setLoading(false));
+        fetch('http://localhost:3001/products')
+            .then((res) => res.json())
+            .then((products) => {
+                setSearchResult(products);
+                setLoading(false);
+            })
+            .catch((err) => {
+                console.log(err);
+                setLoading(false);
+            })
+            .finally(() => setLoading(false));
 
-        timeId.current = setTimeout(() => {
-            setLoading(false);
-        }, 2000);
+        // timeId.current = setTimeout(() => {
+        //     setLoading(false);
+        // }, 2000);
 
-        setSearchResult([
-            {
-                id: 1,
-                image: '',
-                name: 'Áo thun Dinosaur 01',
-                oldPrice: '399,000',
-                newPrice: '189,000',
-            },
-            {
-                id: 2,
-                image: '',
-                name: 'Áo thun Dinosaur 02',
-                oldPrice: '399,000',
-                newPrice: '159,000',
-            },
-            {
-                id: 3,
-                image: '',
-                name: 'Áo thun Dinosaur 03',
-                oldPrice: '399,000',
-                newPrice: '190,000',
-            },
-            {
-                id: 4,
-                image: '',
-                name: 'Áo thun Dinosaur 04',
-                oldPrice: '399,000',
-                newPrice: '194,000',
-            },
-            {
-                id: 5,
-                image: '',
-                name: 'Áo thun Dinosaur 05',
-                oldPrice: '399,000',
-                newPrice: '194,000',
-            },
-        ]);
+        // setSearchResult([
+        //     {
+        //         id: 1,
+        //         image: '',
+        //         name: 'Áo thun Dinosaur 01',
+        //         oldPrice: '399,000',
+        //         newPrice: '189,000',
+        //     },
+        //     {
+        //         id: 2,
+        //         image: '',
+        //         name: 'Áo thun Dinosaur 02',
+        //         oldPrice: '399,000',
+        //         newPrice: '159,000',
+        //     },
+        //     {
+        //         id: 3,
+        //         image: '',
+        //         name: 'Áo thun Dinosaur 03',
+        //         oldPrice: '399,000',
+        //         newPrice: '190,000',
+        //     },
+        //     {
+        //         id: 4,
+        //         image: '',
+        //         name: 'Áo thun Dinosaur 04',
+        //         oldPrice: '399,000',
+        //         newPrice: '194,000',
+        //     },
+        //     {
+        //         id: 5,
+        //         image: '',
+        //         name: 'Áo thun Dinosaur 05',
+        //         oldPrice: '399,000',
+        //         newPrice: '194,000',
+        //     },
+        // ]);
 
-        return () => clearTimeout(timeId.current);
+        // return () => clearTimeout(timeId.current);
     }, [debouncedValue]);
 
     const handleChange = (e) => {
@@ -108,8 +108,8 @@ function Search() {
                 placeholder="Tìm kiếm sản phẩm ở đây!"
                 value={searchValue}
                 onChange={(e) => handleChange(e)}
-                // onFocus={() => setShowResult(true)}
-                // onBlur={() => setShowResult(false)}
+                onFocus={() => setShowResult(true)}
+                onBlur={() => setShowResult(false)}
             />
 
             {!!searchValue && !loading && (
