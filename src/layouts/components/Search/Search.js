@@ -28,7 +28,7 @@ function Search() {
             setLoading(true);
         }
 
-        fetch('http://localhost:3001/products')
+        fetch('https://webshop-server.vercel.app/products')
             .then((res) => res.json())
             .then((products) => {
                 setSearchResult(products);

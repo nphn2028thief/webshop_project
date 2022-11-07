@@ -32,11 +32,16 @@ function Header() {
     };
 
     useEffect(() => {
-        fetch('http://localhost:3001/carts')
+        if (!isLogin) {
+            setProductsInCart([]);
+            return;
+        }
+
+        fetch('https://webshop-server.vercel.app/carts')
             .then((res) => res.json())
             .then((carts) => setProductsInCart(carts))
             .catch((err) => console.log(err));
-    }, []);
+    }, [isLogin]);
 
     return (
         <div ref={headerRef} className={cx('wrapper')}>
