@@ -37,10 +37,6 @@ function MobileMenu() {
         return () => window.removeEventListener('resize', handleResize);
     }, [width]);
 
-    const handleLogin = () => {
-        dispatch(setIsLogin(true));
-    };
-
     const handleLogout = () => {
         dispatch(setIsLogin(false));
         inputRef.current.checked = false;
@@ -78,10 +74,10 @@ function MobileMenu() {
                         </div>
                     ) : (
                         <div className={cx('menu')}>
-                            <button className={cx('menu-item')} onClick={handleLogin}>
+                            <Link to="/account/login" className={cx('menu-item')}>
                                 <FiLogIn size="20" />
                                 Đăng nhập
-                            </button>
+                            </Link>
                         </div>
                     )}
 

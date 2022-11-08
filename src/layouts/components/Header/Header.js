@@ -11,7 +11,6 @@ import Button from '~/components/Button';
 import { Wrapper as PopperWrapper } from '~/components/Popper';
 import { navMenus } from '~/data';
 import { useStore } from '~/hooks';
-import { setIsLogin } from '~/store/actions';
 import ProductItem from '~/components/ProductItem';
 
 const cx = classNames.bind(styles);
@@ -24,12 +23,8 @@ function Header() {
 
     const active = navMenus.findIndex((e) => e.to === pathname);
 
-    const [state, dispatch] = useStore();
+    const [state] = useStore();
     const { isLogin, countProductInCart } = state;
-
-    const handleLogin = () => {
-        dispatch(setIsLogin(true));
-    };
 
     useEffect(() => {
         if (!isLogin) {
@@ -90,7 +85,7 @@ function Header() {
                             </div>
                         </>
                     ) : (
-                        <Button className={cx('login-btn')} unique onClick={handleLogin}>
+                        <Button to="/account/login" className={cx('login-btn')} unique>
                             Đăng nhập
                         </Button>
                         // <Button className={cx('login-btn')} outline>

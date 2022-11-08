@@ -1,0 +1,10 @@
+@use '../../scss/variable' as *;
+
+.wrapper {
+    position: relative;
+    width: 480px;
+    max-width: calc(100% - 32px);
+    border-radius: 4px;
+    background-color: $white;
+    box-shadow: $box-shadow;
+}

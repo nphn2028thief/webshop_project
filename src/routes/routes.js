@@ -1,8 +1,10 @@
-const { default: config } = require('~/config');
-const { default: CartPage } = require('~/pages/CartPage');
-const { default: CatalogPage } = require('~/pages/CatalogPage');
-const { default: HomePage } = require('~/pages/HomePage');
-const { default: ProductPage } = require('~/pages/ProductPage');
+import config from '~/config';
+import HomePage from '~/pages/HomePage';
+import CatalogPage from '~/pages/CatalogPage';
+import CartPage from '~/pages/CartPage';
+import ProductPage from '~/pages/ProductPage';
+import LoginPage from '~/pages/LoginPage';
+import ContentOnly from '~/layouts/ContentOnly';
 
 const publicRoutes = [
     {
@@ -21,6 +23,15 @@ const publicRoutes = [
         path: config.routes.cart,
         component: CartPage,
     },
+    {
+        path: config.routes.login,
+        component: LoginPage,
+        layout: ContentOnly,
+    },
+    // {
+    //     path: config.routes.cart,
+    //     component: CartPage,
+    // },
 ];
 
 const privateRoutes = [];

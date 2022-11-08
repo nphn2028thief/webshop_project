@@ -128,6 +128,17 @@
         position: absolute;
         top: 55px;
         right: -4px;
+        animation: cropOut 0.2s cubic-bezier(0.4, 0, 0.6, 1);
+
+        @keyframes cropOut {
+            from {
+                transform: scale(0);
+            }
+
+            to {
+                transform: scale(1);
+            }
+        }
 
         .cart-title {
             font-size: 1.4rem;

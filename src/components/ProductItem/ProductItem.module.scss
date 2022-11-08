@@ -34,12 +34,15 @@
     }
 
     .price {
-        @include flex(unset, unset, unset, 1.2rem);
-
+        display: flex;
         font-size: 1.4rem;
 
         .new-price {
             color: red;
+
+            + .old-price {
+                margin-left: 1.2rem;
+            }
         }
 
         .old-price {
