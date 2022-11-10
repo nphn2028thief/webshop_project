@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames/bind';
+import TippyHeadless from '@tippyjs/react/headless';
 
 import styles from './Header.module.scss';
 import MobileMenu from '~/components/MobileMenu';
@@ -62,22 +63,31 @@ function Header() {
 
                     {isLogin ? (
                         <>
-                            <div className={cx('action-item', 'action-cart')}>
-                                <Link to="/cart" className={cx('action-icon')}>
-                                    <i className="bx bx-shopping-bag"></i>
-                                    <span className={cx('count-cart')}>{countProductInCart}</span>
-                                </Link>
-
-                                <div className={cx('popper-cart')}>
-                                    <PopperWrapper>
-                                        <h4 className={cx('cart-title')}>Giỏ hàng của bạn</h4>
-                                        <div className={cx('cart-list')}>
-                                            {productsInCart.map((item) => (
-                                                <ProductItem key={item.id} data={item} />
-                                            ))}
+                            <div>
+                                <TippyHeadless
+                                    interactive
+                                    offset={[-100, 10]}
+                                    delay={[0, 500]}
+                                    render={(attrs) => (
+                                        <div className={cx('popper-cart')} {...attrs}>
+                                            <PopperWrapper>
+                                                <h4 className={cx('cart-title')}>Giỏ hàng của bạn</h4>
+                                                <div className={cx('cart-list')}>
+                                                    {productsInCart.map((item) => (
+                                                        <ProductItem key={item.id} data={item} />
+                                                    ))}
+                                                </div>
+                                            </PopperWrapper>
                                         </div>
-                                    </PopperWrapper>
-                                </div>
+                                    )}
+                                >
+                                    <div className={cx('action-item', 'action-cart')}>
+                                        <Link to="/cart" className={cx('action-icon')}>
+                                            <i className="bx bx-shopping-bag"></i>
+                                            <span className={cx('count-cart')}>{countProductInCart}</span>
+                                        </Link>
+                                    </div>
+                                </TippyHeadless>
                             </div>
 
                             <div className={cx('action-item', 'action-avatar')}>
@@ -88,9 +98,6 @@ function Header() {
                         <Button to="/account/login" className={cx('login-btn')} unique>
                             Đăng nhập
                         </Button>
-                        // <Button className={cx('login-btn')} outline>
-                        //     Đăng ký
-                        // </Button>
                     )}
                 </div>
             </div>

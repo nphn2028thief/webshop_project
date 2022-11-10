@@ -1,7 +1,7 @@
 @use '../../../scss/' as *;
 
 .wrapper {
-    @include flex(unset, center, unset, unset);
+    @include flex(unset, center, unset);
 
     position: fixed;
     top: 0;
@@ -19,7 +19,7 @@
 }
 
 .header-container {
-    @include flex(space-between, center, unset, unset);
+    @include flex(space-between, center, unset);
     @include tablet {
         display: grid;
         grid-template-columns: 1fr 15fr;
@@ -30,7 +30,7 @@
     }
 
     .menu {
-        @include flex(unset, center, unset, 0.7rem);
+        @include flex(unset, center, unset);
         @include tablet {
             display: none;
         }
@@ -40,6 +40,10 @@
 
             &:hover {
                 color: $blue;
+            }
+
+            + .menu-item {
+                margin-left: 7px;
             }
         }
     }
@@ -58,7 +62,9 @@
 }
 
 .actions {
-    @include flex(unset, center, unset, 0.7rem);
+    @include flex(unset, center, unset);
+
+    gap: 7px;
 
     @include tablet {
         justify-content: space-between;
@@ -84,31 +90,12 @@
     padding: 10px;
     cursor: pointer;
 
-    &:hover > * {
-        color: $blue;
-
-        ~ .popper-cart {
-            display: block;
-        }
-    }
-
     .action-icon {
         display: flex;
         font-size: 2.6rem;
 
-        &::before {
-            content: '';
-            width: 100px;
-            height: 9px;
-            position: absolute;
-            top: 46px;
-            right: -4px;
-            background-color: transparent;
-            z-index: 999;
-        }
-
         .count-cart {
-            @include flex(center, center, unset, unset);
+            @include flex(center, center, unset);
 
             width: 16px;
             height: 16px;
@@ -121,36 +108,32 @@
             border-radius: 50%;
         }
     }
+}
 
-    .popper-cart {
-        display: none;
-        width: $search-width;
-        position: absolute;
-        top: 55px;
-        right: -4px;
-        animation: cropOut 0.2s cubic-bezier(0.4, 0, 0.6, 1);
+.popper-cart {
+    width: $search-width;
+    // animation: cropOut 0.2s cubic-bezier(0.4, 0, 0.6, 1);
 
-        @keyframes cropOut {
-            from {
-                transform: scale(0);
-            }
-
-            to {
-                transform: scale(1);
-            }
+    @keyframes cropOut {
+        from {
+            transform: scale(0);
         }
 
-        .cart-title {
-            font-size: 1.4rem;
-            font-weight: 600;
-            color: rgba(22, 24, 35, 0.5);
-            padding: 0 8px 8px;
+        to {
+            transform: scale(1);
         }
+    }
 
-        .cart-list {
-            @include flex(unset, unset, column, 0.6rem);
-            margin-top: 4px;
-        }
+    .cart-title {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: rgba(22, 24, 35, 0.5);
+        padding: 0 8px 8px;
+    }
+
+    .cart-list {
+        @include flex(unset, unset, column);
+        margin-top: 4px;
     }
 }
 

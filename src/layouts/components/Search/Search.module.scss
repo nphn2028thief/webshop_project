@@ -93,6 +93,6 @@
 
     .product-list {
         margin-top: 4px;
-        @include flex(unset, unset, column, 0.6rem);
+        @include flex(unset, unset, column);
     }
 }

@@ -28,10 +28,11 @@ const publicRoutes = [
         component: LoginPage,
         layout: ContentOnly,
     },
-    // {
-    //     path: config.routes.cart,
-    //     component: CartPage,
-    // },
+    {
+        path: config.routes.register,
+        component: LoginPage,
+        layout: ContentOnly,
+    },
 ];
 
 const privateRoutes = [];

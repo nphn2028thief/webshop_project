@@ -1,12 +1,16 @@
 @use '../../scss/' as *;
 
 .product-item {
-    @include flex(unset, center, unset, unset);
+    @include flex(unset, center, unset);
 
     padding: 6px 8px;
 
     &:hover {
         background-color: rgba(66, 103, 178, 0.2);
+    }
+
+    + .product-item {
+        margin-top: 12px;
     }
 
     .image {

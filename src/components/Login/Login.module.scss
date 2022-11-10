@@ -1,34 +1,56 @@
 @use '../../scss/' as *;
 
-.title {
-    font-size: 2.8rem;
-    font-weight: 600;
-    letter-spacing: 1px;
-    color: $blue;
+.wrapper {
     position: relative;
-    margin-top: 48px;
-    padding-left: 32px;
-    padding-right: 32px;
-    margin-bottom: 32px;
+    width: 480px;
+    max-width: calc(100% - 32px);
+    border-radius: 4px;
+    background-color: $white;
+    box-shadow: $box-shadow;
+}
 
-    &::before {
-        content: '';
-        position: absolute;
-        width: 4px;
-        height: 100%;
-        top: 0;
-        left: 0;
-        background-color: $blue;
+.action {
+    @include flex(space-between, center, unset);
+
+    margin-top: 48px;
+    margin-bottom: 32px;
+    padding-right: 32px;
+
+    .title {
+        font-size: 2.8rem;
+        font-weight: 600;
+        letter-spacing: 1px;
+        color: $blue;
+        position: relative;
+        padding-left: 32px;
+
+        &::before {
+            content: '';
+            position: absolute;
+            width: 4px;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background-color: $blue;
+        }
+    }
+
+    .action-register {
+        text-decoration: underline;
+
+        &:hover {
+            color: $blue;
+        }
     }
 }
 
 .form-control {
-    @include flex(unset, unset, column, unset);
+    @include flex(unset, unset, column);
 
     padding: 0 32px 32px;
 
     .control {
-        @include flex(unset, unset, column, unset);
+        @include flex(unset, unset, column);
 
         .input {
             font-size: 1.6rem;
