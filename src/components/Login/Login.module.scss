@@ -4,43 +4,32 @@
     position: relative;
     width: 480px;
     max-width: calc(100% - 32px);
+    max-height: 570px;
     border-radius: 4px;
     background-color: $white;
     box-shadow: $box-shadow;
+    overflow-y: auto;
 }
 
-.action {
-    @include flex(space-between, center, unset);
-
+.title {
+    font-size: 2.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: $blue;
+    position: relative;
     margin-top: 48px;
     margin-bottom: 32px;
     padding-right: 32px;
+    padding-left: 32px;
 
-    .title {
-        font-size: 2.8rem;
-        font-weight: 600;
-        letter-spacing: 1px;
-        color: $blue;
-        position: relative;
-        padding-left: 32px;
-
-        &::before {
-            content: '';
-            position: absolute;
-            width: 4px;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background-color: $blue;
-        }
-    }
-
-    .action-register {
-        text-decoration: underline;
-
-        &:hover {
-            color: $blue;
-        }
+    &::before {
+        content: '';
+        position: absolute;
+        width: 4px;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: $blue;
     }
 }
 
@@ -70,6 +59,20 @@
 
         + .control {
             margin-top: 20px;
+        }
+    }
+
+    .text {
+        font-size: 1.4rem;
+        margin-top: 12px;
+
+        .link {
+            text-decoration: underline;
+            margin-left: 4px;
+
+            &:hover {
+                color: $blue;
+            }
         }
     }
 
@@ -110,5 +113,36 @@
         margin-top: 16px;
         user-select: none;
         cursor: pointer;
+    }
+}
+
+/* Loading */
+.loading-handler {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+
+    .loading-icon {
+        display: flex;
+        position: absolute;
+        font-size: 5rem;
+        color: $blue;
+        animation: spinner 0.8s linear infinite;
+
+        @keyframes spinner {
+            from {
+                transform: rotate(0);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
     }
 }
