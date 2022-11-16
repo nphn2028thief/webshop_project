@@ -29,7 +29,7 @@ const publicRoutes = [
         layout: ContentOnly,
     },
     {
-        path: config.routes.register,
+        path: config.routes.login,
         component: LoginPage,
         layout: ContentOnly,
     },

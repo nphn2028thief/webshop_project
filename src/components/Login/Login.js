@@ -1,21 +1,19 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
 import styles from './Login.module.scss';
 import { useStore } from '~/hooks';
 import { setIsLogin } from '~/store/actions';
+import { FacebookIcon, GoogleIcon } from '~/components/Icons';
+import Button from '../Button';
 
 const cx = classNames.bind(styles);
 
 function Login() {
     const navigate = useNavigate();
     const [state, dispatch] = useStore();
-
-    const accountRef = useRef();
-    const passwordRef = useRef();
-
-    const { pathname } = useLocation();
+    const [clicked, setClicked] = useState(false);
 
     const handleLogin = (e) => {
         e.preventDefault();
@@ -24,102 +22,112 @@ function Login() {
     };
 
     return (
-        <>
-            <div className={cx('wrapper')}>
-                {pathname === '/account/login' ? (
-                    <>
-                        <h2 className={cx('title')}>Đăng nhập</h2>
+        <div className={clicked ? cx('wrapper', 'right-panel-active') : cx('wrapper')}>
+            <div className={cx('form-container', 'sign-up-container')}>
+                <form className={cx('form-control')}>
+                    <h2 className={cx('title')}>Đăng ký tài khoản</h2>
 
-                        <form className={cx('form-control')}>
-                            <div className={cx('control')}>
-                                <input ref={accountRef} className={cx('input')} placeholder="Tên đăng nhập" />
-                                <span className={cx('error')}>Error</span>
-                            </div>
+                    <div style={{ marginTop: '16px' }}>
+                        <div className={cx('control')}>
+                            <input className={cx('input')} type="tel" placeholder="Số điện thoại" />
+                            {/* <span className={cx('error')}>Error</span> */}
+                        </div>
+                        <div className={cx('control')}>
+                            <input className={cx('input')} type="password" placeholder="Mật khẩu" />
+                            {/* <span className={cx('error')}>Error</span> */}
+                        </div>
+                        <div className={cx('control')}>
+                            <input className={cx('input')} type="password" placeholder="Nhập lại mật khẩu" />
+                            {/* <span className={cx('error')}>Error</span> */}
+                        </div>
+                        <div className={cx('control')}>
+                            <input className={cx('input')} placeholder="Họ tên" />
+                            {/* <span className={cx('error')}>Error</span> */}
+                        </div>
+                        <div className={cx('control')}>
+                            <input className={cx('input')} placeholder="Địa chỉ" />
+                            {/* <span className={cx('error')}>Error</span> */}
+                        </div>
+                    </div>
 
-                            <div className={cx('control')}>
-                                <input
-                                    ref={passwordRef}
-                                    type="password"
-                                    className={cx('input')}
-                                    placeholder="Mật khẩu"
-                                />
-                                <span className={cx('error')}>error</span>
-                            </div>
+                    <input type="submit" className={cx('submit-btn')} value="Đăng ký" />
 
-                            <span className={cx('text')}>
-                                Bạn chưa có tài khoản?
-                                <Link to="/account/register" className={cx('link')}>
-                                    Đăng ký
-                                </Link>
-                            </span>
-
-                            <input
-                                type="submit"
-                                className={cx('submit-btn')}
-                                value="Đăng nhập"
-                                onClick={(e) => handleLogin(e)}
-                            />
-                            <span className={cx('forgot-password')}>Quên mật khẩu?</span>
-                        </form>
-                    </>
-                ) : (
-                    <>
-                        <h2 className={cx('title')}>Đăng ký</h2>
-
-                        <form className={cx('form-control')}>
-                            <div className={cx('control')}>
-                                <input className={cx('input')} placeholder="Tên đăng nhập" />
-                                <span className={cx('error')}>Error</span>
-                            </div>
-
-                            <div className={cx('control')}>
-                                <input type="password" className={cx('input')} placeholder="Mật khẩu" />
-                                <span className={cx('error')}>error</span>
-                            </div>
-
-                            <div className={cx('control')}>
-                                <input type="password" className={cx('input')} placeholder="Nhập lại mật khẩu" />
-                                <span className={cx('error')}>error</span>
-                            </div>
-
-                            <div className={cx('control')}>
-                                <input className={cx('input')} placeholder="Họ tên" />
-                                <span className={cx('error')}>error</span>
-                            </div>
-
-                            <div className={cx('control')}>
-                                <input className={cx('input')} placeholder="Địa chỉ" />
-                                <span className={cx('error')}>error</span>
-                            </div>
-
-                            <div className={cx('control')}>
-                                <input className={cx('input')} type="number" placeholder="Số điện thoại" />
-                                <span className={cx('error')}>error</span>
-                            </div>
-
-                            <span className={cx('text')}>
-                                Bạn đã có tài khoản?
-                                <Link to="/account/login" className={cx('link')}>
-                                    Đăng nhập
-                                </Link>
-                            </span>
-
-                            <input
-                                type="submit"
-                                className={cx('submit-btn')}
-                                value="Đăng ký"
-                                // onClick={(e) => handleLogin(e)}
-                            />
-                        </form>
-                    </>
-                )}
+                    <span className={cx('text')}>
+                        Bạn đã có tài khoản?
+                        <span className={cx('switch-text')} onClick={() => setClicked(false)}>
+                            Đăng nhập
+                        </span>
+                    </span>
+                </form>
             </div>
-            <div className={cx('loading-handler')}>
-                <span className={cx('loading-icon')}>
-                    <i className="bx bx-loader-alt"></i>
-                </span>
+
+            <div className={cx('form-container', 'sign-in-container')}>
+                <form className={cx('form-control')}>
+                    <h2 className={cx('title')}>Đăng nhập</h2>
+                    <div className={cx('social-list')}>
+                        <button className={cx('social-item')}>
+                            <FacebookIcon />
+                        </button>
+
+                        <button className={cx('social-item')}>
+                            <GoogleIcon />
+                        </button>
+                    </div>
+                    <span className={cx('text')}>hoặc sử dụng số điện thoại để đăng nhập</span>
+
+                    <div style={{ width: '100%', marginTop: '16px' }}>
+                        <div className={cx('control')}>
+                            <input className={cx('input')} type="tel" placeholder="Số điện thoại" />
+                            {/* <span className={cx('error')}>Error</span> */}
+                        </div>
+                        <div className={cx('control')}>
+                            <input className={cx('input')} type="password" placeholder="Mật khẩu" />
+                            {/* <span className={cx('error')}>Error</span> */}
+                        </div>
+                    </div>
+
+                    <Link to="/account/forgot" className={cx('forgot')}>
+                        Quên mật khẩu?
+                    </Link>
+
+                    <input
+                        type="submit"
+                        className={cx('submit-btn')}
+                        value="Đăng nhập"
+                        onClick={(e) => handleLogin(e)}
+                    />
+
+                    <span className={cx('text')}>
+                        Bạn chưa có tài khoản?
+                        <span className={cx('switch-text')} onClick={() => setClicked(true)}>
+                            Đăng ký
+                        </span>
+                    </span>
+                </form>
             </div>
-        </>
+
+            <div className={cx('overlay-container')}>
+                <div className={cx('overlay')}>
+                    <div className={cx('overlay-panel', 'left')}>
+                        <h2 className={cx('overlay-title')}>Chào mừng trở lại!</h2>
+                        <p className={cx('overlay-desc')}>
+                            Để kết nối với chúng tôi, vui lòng đăng nhập bằng thông tin của bạn
+                        </p>
+                        <Button outline className={cx('switch-btn')} onClick={() => setClicked(false)}>
+                            Đăng nhập
+                        </Button>
+                    </div>
+
+                    <div className={cx('overlay-panel', 'right')}>
+                        <h2 className={cx('overlay-title')}>Xin chào, người mới!</h2>
+                        <p className={cx('overlay-desc')}>Nhập thông tin của bạn và bắt đầu mua sắm với chúng tôi</p>
+                        <Button outline className={cx('switch-btn')} onClick={() => setClicked(true)}>
+                            Đăng ký
+                        </Button>
+                    </div>
+                </div>
+            </div>
+        </div>
     );
 }
 
