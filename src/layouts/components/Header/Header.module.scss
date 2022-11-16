@@ -148,3 +148,55 @@
         border-radius: 50%;
     }
 }
+
+.popper-user-menu {
+    min-width: 230px;
+    background-color: $white;
+    box-shadow: $box-shadow-popper;
+    color: #1d2129;
+    padding: 8px 24px;
+    border-radius: 10px;
+}
+
+.popper-profile {
+    @include flex(unset, center, unset);
+
+    .popper-avatar {
+        width: 52px;
+        height: 52px;
+        margin: 10px 0;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    .popper-info {
+        @include flex(unset, unset, column);
+        margin-left: 12px;
+
+        .name {
+            font-weight: 600;
+        }
+
+        .username {
+            font-size: 1.4rem;
+            color: #666;
+        }
+    }
+}
+
+.popper-actions {
+    .action-item {
+        min-width: 0;
+        width: 100%;
+        justify-content: flex-start;
+        color: #666;
+        padding: 8px 4px;
+        font-size: 1.4rem;
+        border-radius: 4px;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba(66, 103, 178, 0.2);
+        }
+    }
+}

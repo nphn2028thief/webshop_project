@@ -13,6 +13,7 @@ import { Wrapper as PopperWrapper } from '~/components/Popper';
 import { navMenus } from '~/data';
 import { useStore } from '~/hooks';
 import ProductItem from '~/components/ProductItem';
+import { setIsLogin } from '~/store/actions';
 
 const cx = classNames.bind(styles);
 
@@ -24,7 +25,7 @@ function Header() {
 
     const active = navMenus.findIndex((e) => e.to === pathname);
 
-    const [state] = useStore();
+    const [state, dispatch] = useStore();
     const { isLogin, countProductInCart } = state;
 
     useEffect(() => {
@@ -38,6 +39,10 @@ function Header() {
             .then((carts) => setProductsInCart(carts))
             .catch((err) => console.log(err));
     }, [isLogin]);
+
+    const handleLogout = () => {
+        dispatch(setIsLogin(false));
+    };
 
     return (
         <div ref={headerRef} className={cx('wrapper')}>
@@ -67,7 +72,7 @@ function Header() {
                                 <TippyHeadless
                                     interactive
                                     offset={[-100, 10]}
-                                    delay={[0, 500]}
+                                    delay={[0, 400]}
                                     render={(attrs) => (
                                         <div className={cx('popper-cart')} {...attrs}>
                                             <PopperWrapper>
@@ -90,8 +95,42 @@ function Header() {
                                 </TippyHeadless>
                             </div>
 
-                            <div className={cx('action-item', 'action-avatar')}>
-                                <Image src="" className={cx('avatar')} alt="avatar" />
+                            <div>
+                                <TippyHeadless
+                                    interactive
+                                    delay={[0, 400]}
+                                    offset={[-70, 10]}
+                                    render={(attrs) => (
+                                        <ul className={cx('popper-user-menu')} {...attrs}>
+                                            <div className={cx('popper-profile')}>
+                                                <Image src="" className={cx('popper-avatar')} alt="Avatar-img" />
+                                                <div className={cx('popper-info')}>
+                                                    <span className={cx('name')}>Nguyễn Nhân</span>
+                                                    <span className={cx('username')}>@nguyennhan</span>
+                                                </div>
+                                            </div>
+                                            <hr />
+
+                                            <ul className={cx('popper-actions')}>
+                                                <li>
+                                                    <Button className={cx('action-item')}>Cài đặt tài khoản</Button>
+                                                </li>
+                                            </ul>
+
+                                            <ul className={cx('popper-actions')}>
+                                                <li>
+                                                    <Button className={cx('action-item')} onClick={handleLogout}>
+                                                        Đăng xuất
+                                                    </Button>
+                                                </li>
+                                            </ul>
+                                        </ul>
+                                    )}
+                                >
+                                    <div className={cx('action-item', 'action-avatar')}>
+                                        <Image src="" className={cx('avatar')} alt="avatar" />
+                                    </div>
+                                </TippyHeadless>
                             </div>
                         </>
                     ) : (

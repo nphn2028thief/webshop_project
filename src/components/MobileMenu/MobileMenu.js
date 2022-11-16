@@ -14,7 +14,7 @@ const cx = classNames.bind(styles);
 
 function MobileMenu() {
     const [width, setWidth] = useState(window.innerWidth);
-    const inputRef = useRef();
+    const checkboxRef = useRef();
     const contentRef = useRef();
     const { pathname } = useLocation();
 
@@ -28,7 +28,7 @@ function MobileMenu() {
             setWidth(window.innerWidth);
 
             if (width > 1149) {
-                inputRef.current.checked = false;
+                checkboxRef.current.checked = false;
             }
         };
 
@@ -39,7 +39,7 @@ function MobileMenu() {
 
     const handleLogout = () => {
         dispatch(setIsLogin(false));
-        inputRef.current.checked = false;
+        checkboxRef.current.checked = false;
     };
 
     return (
@@ -48,7 +48,7 @@ function MobileMenu() {
                 <i className="bx bx-menu-alt-left"></i>
             </label>
 
-            <input ref={inputRef} type="checkbox" id={cx('mobile-menu-input')} />
+            <input ref={checkboxRef} type="checkbox" id={cx('mobile-menu-input')} />
 
             <label htmlFor={styles['mobile-menu-input']} className={cx('overlay')}></label>
 
@@ -66,7 +66,7 @@ function MobileMenu() {
                             <Link
                                 to="/cart"
                                 className={cx('menu-item')}
-                                onClick={() => (inputRef.current.checked = false)}
+                                onClick={() => (checkboxRef.current.checked = false)}
                             >
                                 <BiShoppingBag size="20" />
                                 Giỏ hàng của tôi ({countProductInCart})
@@ -87,7 +87,7 @@ function MobileMenu() {
                                 key={navMenu.id}
                                 to={navMenu.to}
                                 className={navMenu.id === active + 1 ? cx('menu-item', 'active') : cx('menu-item')}
-                                onClick={() => (inputRef.current.checked = false)}
+                                onClick={() => (checkboxRef.current.checked = false)}
                             >
                                 {navMenu.icon}
                                 {navMenu.name}
