@@ -1,7 +1,7 @@
 @use '../../../scss/' as *;
 
 .wrapper {
-    width: $search-width;
+    width: var(--search-width);
     margin-right: 16px;
     position: relative;
 
@@ -24,7 +24,7 @@
         z-index: 100;
 
         &:focus {
-            border-color: $black;
+            border-color: var(--black);
         }
 
         @include tablet {
@@ -44,7 +44,7 @@
     .clear {
         display: flex;
         padding: 8px;
-        color: $black;
+        color: var(--black);
         background-color: transparent;
 
         @include tablet {

@@ -5,8 +5,8 @@
     max-height: min((100vh - 96px) - 60px, 734px);
     min-height: 100px;
     border-radius: 8px;
-    background: $white;
-    box-shadow: $box-shadow;
+    background: var(--white);
+    box-shadow: var(--box-shadow);
     padding-top: 12px;
     overflow: auto;
     overflow-y: overlay;

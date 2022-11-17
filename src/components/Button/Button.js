@@ -9,6 +9,7 @@ function Button({
     to,
     href,
     className,
+    style,
     primary = false,
     unique = false,
     outline = false,
@@ -43,7 +44,7 @@ function Button({
     });
 
     return (
-        <Component className={classes} {..._props}>
+        <Component className={classes} style={style} {..._props}>
             {icon && icon}
             <span className={cx('text')}>{children}</span>
         </Component>
