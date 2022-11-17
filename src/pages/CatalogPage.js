@@ -1,5 +1,7 @@
+import TabTitle from '~/components/TabTitle';
+
 function CatalogPage() {
-    return <div>CatalogPage</div>;
+    return <TabTitle title="Sản phẩm">CatalogPage</TabTitle>;
 }
 
 export default CatalogPage;

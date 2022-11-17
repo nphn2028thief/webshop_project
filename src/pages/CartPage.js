@@ -1,5 +1,7 @@
+import TabTitle from '~/components/TabTitle';
+
 function CartPage() {
-    return <div>CartPage</div>;
+    return <TabTitle title="Giỏ hàng">CartPage</TabTitle>;
 }
 
 export default CartPage;

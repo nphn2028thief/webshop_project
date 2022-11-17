@@ -28,3 +28,59 @@ export const navMenus = [
         icon: <MdOutlineContactless size="20" />,
     },
 ];
+
+export const supportContents = [
+    {
+        id: 1,
+        display: 'Liên hệ đặt hàng:',
+        phone: '0777498646',
+    },
+    {
+        id: 2,
+        display: 'Thắc mắc đơn hàng:',
+        phone: '0777498646',
+    },
+    {
+        id: 3,
+        display: 'Góp ý khiếu nại:',
+        phone: '0777498646',
+    },
+];
+
+export const abouts = [
+    {
+        id: 1,
+        display: 'Giới thiệu',
+    },
+    {
+        id: 2,
+        display: 'Liên hệ',
+    },
+    {
+        id: 3,
+        display: 'Tuyển dụng',
+    },
+    {
+        id: 4,
+        display: 'Tin tức',
+    },
+    {
+        id: 5,
+        display: 'Hệ thống cửa hàng',
+    },
+];
+
+export const supportCustomers = [
+    {
+        id: 1,
+        display: 'Chính sách đổi trả',
+    },
+    {
+        id: 2,
+        display: 'Chính sách bảo hành',
+    },
+    {
+        id: 3,
+        display: 'Chính sách hoàn tiền',
+    },
+];
