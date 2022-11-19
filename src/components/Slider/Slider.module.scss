@@ -74,9 +74,11 @@
     flex: 0 0 40%;
     padding-bottom: 40px;
     position: relative;
+    margin-left: 20px;
 
     @include tablet {
         flex: 0 0 100%;
+        margin-left: 0;
     }
 
     @include mobile {
@@ -101,7 +103,7 @@
     }
 
     .shape {
-        --size: 472px;
+        --size: 380px;
         width: var(--size);
         height: var(--size);
         position: absolute;

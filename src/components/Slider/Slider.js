@@ -25,7 +25,7 @@ function Slider() {
                 spaceBetween={0}
                 modules={[Autoplay]}
                 grabCursor={true}
-                autoplay={{ delay: 3000, disableOnInteraction: false }}
+                // autoplay={{ delay: 3000, disableOnInteraction: false }}
             >
                 {sliderData.map((item) => (
                     <SwiperSlide key={item.id}>
