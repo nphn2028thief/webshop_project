@@ -5,6 +5,10 @@
 
     flex-wrap: wrap;
     margin-top: 20px !important;
+
+    @include mobile {
+        margin-top: 56px !important;
+    }
 }
 
 .policy-card-item {

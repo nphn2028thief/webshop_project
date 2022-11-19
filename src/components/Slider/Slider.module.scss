@@ -12,6 +12,7 @@
     @include tablet {
         height: auto;
         flex-direction: column-reverse;
+        margin-bottom: 0;
     }
 }
 
@@ -22,10 +23,6 @@
     @include tablet {
         flex: 0 0 100%;
         text-align: center;
-    }
-
-    @include mobile {
-        min-height: 465px;
     }
 
     .title,
