@@ -52,9 +52,8 @@
 
     .detail-btn {
         display: inline-block;
-        border-radius: 4px;
-        font-size: 1.4rem;
-        padding: 8px 24px;
+        width: 150px;
+        height: 43px;
 
         @include tablet {
             padding: 10px 28px;
