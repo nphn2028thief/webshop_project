@@ -33,6 +33,7 @@ function SliderItem({ data, isActive }) {
                     primary
                     small
                     icon={<FiShoppingCart size="20" />}
+                    style={{ backgroundColor: `var(--${data.color})` }}
                 >
                     XEM CHI TIẾT
                 </Button>
