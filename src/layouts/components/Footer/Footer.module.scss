@@ -3,7 +3,7 @@
 .footer-container {
     display: flex;
     flex-wrap: wrap;
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    box-shadow: var(--box-shadow-footer);
     padding-top: 70px !important;
     padding-bottom: 70px !important;
 }

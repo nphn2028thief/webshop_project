@@ -1,6 +1,8 @@
-import { BiHomeAlt } from 'react-icons/bi';
+import { BiHomeAlt, BiDonateHeart } from 'react-icons/bi';
 import { GiClothes, GiExtractionOrb } from 'react-icons/gi';
-import { MdOutlineContactless } from 'react-icons/md';
+import { MdOutlineContactless, MdOutlineLocalShipping } from 'react-icons/md';
+import { BsCreditCard } from 'react-icons/bs';
+import { RiVipDiamondLine } from 'react-icons/ri';
 
 import images from '~/assets/images';
 
@@ -111,5 +113,32 @@ export const sliderData = [
         image: images.imageSlider3,
         color: 'orange',
         path: '/catalog/ao-thun-polo-nu-03',
+    },
+];
+
+export const policies = [
+    {
+        id: 1,
+        name: 'Miễn phí giao hàng',
+        desc: 'Miến phí ship với đơn hàng trên 239K',
+        icon: <MdOutlineLocalShipping size="28" style={{ width: '100%', color: 'var(--blue)' }} />,
+    },
+    {
+        id: 2,
+        name: 'Thanh toán COD',
+        desc: 'Thanh toán khi nhận hàng (COD)',
+        icon: <BsCreditCard size="28" style={{ width: '100%', color: 'var(--blue)' }} />,
+    },
+    {
+        id: 3,
+        name: 'Khách hàng VIP',
+        desc: 'Ưu đãi dành cho khách hàng VIP',
+        icon: <RiVipDiamondLine size="28" style={{ width: '100%', color: 'var(--blue)' }} />,
+    },
+    {
+        id: 4,
+        name: 'Hỗ trợ bảo hành',
+        desc: 'Đổi và sửa đồ tại tất cả cửa hàng trên toàn quốc',
+        icon: <BiDonateHeart size="28" style={{ width: '100%', color: 'var(--blue)' }} />,
     },
 ];
