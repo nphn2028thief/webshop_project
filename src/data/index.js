@@ -93,7 +93,7 @@ export const sliderData = [
     {
         id: 1,
         title: 'Polo nữ Pima cao cấp',
-        desc: 'Nhắc đến sự đẳng cấp là không thể không nhắc đến dòng vải Pima. Nó tạo nên chất lượng tốt nhất cho bất kỳ sản phẩm thời trang nào. Sợi vài Pima dài và dày hơn sợi cotton thông thường gấp đôi nhờ công nghệ tân tiến. Điều đó làm cho kết cấu áo Polo chắc chắn, bền, hạn chế tối đa xù lông, mềm mượt và đảm bảo sức khoẻ người dùng.',
+        desc: 'Nhắc đến sự đẳng cấp là không thể không nhắc đến dòng vải Pima. Sợi vài Pima dài và dày hơn sợi cotton thông thường gấp đôi nhờ công nghệ tân tiến. Điều đó làm cho kết cấu áo Polo chắc chắn, bền, hạn chế tối đa xù lông, mềm mượt và đảm bảo sức khoẻ người dùng.',
         image: images.imageSlider1,
         color: 'blue',
         path: '/catalog/ao-thun-polo-nu-01',

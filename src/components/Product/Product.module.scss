@@ -1,0 +1,106 @@
+@use '../../scss/' as *;
+
+.wrapper {
+    display: block;
+    margin-top: 56px;
+
+    .title {
+        font-weight: 600;
+        text-align: center;
+        letter-spacing: 1px;
+    }
+
+    .product-list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
+        flex-wrap: wrap;
+        margin-top: 48px;
+
+        @include tablet {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include mobile {
+            grid-template-columns: 1fr;
+        }
+    }
+}
+
+.product-item {
+    // border: 1px solid var(--blue);
+    border-radius: 4px;
+    user-select: none;
+
+    .images {
+        padding-top: 100%;
+        position: relative;
+        overflow: hidden;
+
+        &:hover {
+            .model-image {
+                transform: translateX(-50%) scale(0);
+            }
+
+            .product-image {
+                transform: translateX(-50%) scale(1);
+            }
+        }
+
+        .model-image,
+        .product-image {
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transition: transform 0.5s ease;
+        }
+
+        .model-image {
+            transform: translateX(-50%) scale(1);
+        }
+
+        .product-image {
+            transform: translateX(-50%) scale(0);
+        }
+    }
+}
+
+.info {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+    margin-top: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
+    padding-bottom: 16px;
+    text-align: center;
+
+    .name {
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: var(--text-color);
+    }
+
+    .prices {
+        @include flex(center, center, unset);
+
+        font-size: 1.6rem;
+
+        .new-price {
+            font-weight: 600;
+            margin-right: 16px;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: var(--text-color);
+        }
+    }
+
+    .detail-btn {
+        font-size: 1.4rem;
+        height: 32px;
+        margin-top: 4px;
+    }
+}

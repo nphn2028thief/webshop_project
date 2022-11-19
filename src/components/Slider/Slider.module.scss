@@ -7,7 +7,7 @@
     max-height: 1080px;
     overflow: hidden;
     position: relative;
-    margin-bottom: 50px;
+    margin-bottom: 40px;
 
     @include tablet {
         height: auto;
@@ -16,11 +16,16 @@
 }
 
 .info {
+    min-height: 275px;
     flex: 0 0 60%;
 
     @include tablet {
         flex: 0 0 100%;
         text-align: center;
+    }
+
+    @include mobile {
+        min-height: 465px;
     }
 
     .title,
@@ -43,11 +48,26 @@
         font-weight: 600;
         letter-spacing: 1px;
         margin-bottom: 24px;
+
+        @include mobile {
+            font-size: 3.8rem;
+        }
     }
 
     .desc {
+        min-height: 75px;
+        height: 100%;
         color: var(--text-color);
         margin-bottom: 36px;
+
+        @include tablet {
+            margin-bottom: 28px;
+        }
+
+        @include mobile {
+            min-height: 175px;
+            margin-bottom: 16px;
+        }
     }
 
     .detail-btn {

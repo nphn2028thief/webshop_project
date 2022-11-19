@@ -2,6 +2,7 @@ import classNames from 'classnames/bind';
 import { FiShoppingCart } from 'react-icons/fi';
 
 import Button from '../Button';
+import Image from '../Image';
 import styles from './Slider.module.scss';
 
 const cx = classNames.bind(styles);
@@ -17,15 +18,6 @@ function SliderItem({ data, isActive }) {
                     {data.title}
                 </h3>
                 <p className={isActive ? cx('desc', 'active') : cx('desc')}>{data.desc}</p>
-                {/* <Button
-                    to={data.path}
-                    primary
-                    small
-                    className={isActive ? cx('detail-btn', 'active') : cx('detail-btn')}
-                    style={{ backgroundColor: `var(--${data.color})` }}
-                >
-                    XEM CHI TIẾT
-                </Button> */}
 
                 <Button
                     to={data.path}
@@ -40,7 +32,7 @@ function SliderItem({ data, isActive }) {
             </div>
 
             <div className={cx('image-section')}>
-                <img src={data.image} className={isActive ? cx('image', 'active') : cx('image')} alt="slider-img" />
+                <Image src={data.image} className={isActive ? cx('image', 'active') : cx('image')} alt="slider-img" />
                 <div className={cx('shape')} style={{ backgroundColor: `var(--${data.color})` }}></div>
             </div>
         </div>
