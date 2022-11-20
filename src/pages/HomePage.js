@@ -10,6 +10,7 @@ function HomePage() {
             <PolicyCard />
             <Product isBestSeller title="Top sản phẩm bán chạy trong tuần" />
             <Product isNew title="Sản phẩm mới" />
+            <Product title="Sản phẩm phổ biến" />
         </TabTitle>
     );
 }

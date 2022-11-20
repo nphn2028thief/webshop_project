@@ -5,9 +5,45 @@
     margin-top: 56px;
 
     .title {
+        @include flex(center, center, row);
+
         font-weight: 600;
-        text-align: center;
         letter-spacing: 1px;
+        user-select: none;
+
+        .new {
+            margin-left: 4px;
+            align-self: flex-start;
+            transform: rotate(-7deg);
+        }
+    }
+
+    .rainbow {
+        animation: rainbow 0.4s infinite;
+    }
+
+    @keyframes rainbow {
+        0% {
+            color: #fc0303;
+        }
+        17% {
+            color: #45f52a;
+        }
+        34% {
+            color: #2a7bf5;
+        }
+        51% {
+            color: #2af5e4;
+        }
+        68% {
+            color: #c92af5;
+        }
+        85% {
+            color: #f5dd2a;
+        }
+        100% {
+            color: #66655d;
+        }
     }
 
     .product-list {
@@ -106,6 +142,7 @@
     justify-self: center;
 
     @include tablet {
+        width: 70%;
         height: 36px;
     }
 

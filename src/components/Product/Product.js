@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
+import { MdFiberNew } from 'react-icons/md';
 
 import { products } from '~/data';
 import ProductItem from './ProductItem';
@@ -39,17 +40,22 @@ function Product({ isBestSeller = false, isNew = false, title }) {
 
     return (
         <div className={cx('wrapper')}>
-            <h2 className={cx('title')}>{title}</h2>
+            <h2 className={isNew ? cx('title', 'rainbow') : cx('title')}>
+                {title}
+                {isNew && (
+                    <span className={cx('new', 'rainbow')}>
+                        <MdFiberNew size="24" />
+                    </span>
+                )}
+            </h2>
             <ul className={cx('product-list', 'container')}>
-                {isBestSeller &&
-                    bestSellerProducts &&
-                    bestSellerProducts.map((bestSellerProduct) => (
-                        <ProductItem key={bestSellerProduct.id} data={bestSellerProduct} />
-                    ))}
-
-                {isNew &&
-                    newProducts &&
-                    newProducts.map((newProduct) => <ProductItem key={newProduct.id} data={newProduct} />)}
+                {isBestSeller && bestSellerProducts
+                    ? bestSellerProducts.map((bestSellerProduct) => (
+                          <ProductItem key={bestSellerProduct.id} data={bestSellerProduct} />
+                      ))
+                    : isNew && newProducts
+                    ? newProducts.map((newProduct) => <ProductItem key={newProduct.id} data={newProduct} />)
+                    : products.map((product) => <ProductItem key={product.id} data={product} />)}
             </ul>
         </div>
     );
