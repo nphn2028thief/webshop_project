@@ -29,6 +29,20 @@ function Header() {
     const { isLogin, countProductInCart } = state;
 
     useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 0) {
+                headerRef.current.style.boxShadow = 'var(--box-shadow)';
+            } else {
+                headerRef.current.style.boxShadow = 'none';
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    useEffect(() => {
         if (!isLogin) {
             setProductsInCart([]);
             return;

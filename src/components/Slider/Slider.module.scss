@@ -70,7 +70,7 @@
     .detail-btn {
         display: inline-block;
         width: 150px;
-        height: 43px;
+        height: 40px;
 
         @include tablet {
             padding: 10px 28px;
@@ -105,7 +105,7 @@
         height: 100%;
         z-index: 2;
         transform: scale(0) rotate(65deg);
-        transition: transform 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        transition: transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
         @include tablet {
             height: 60vh;

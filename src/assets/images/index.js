@@ -35,6 +35,12 @@ const images = {
 
     product_10_image_01: require('~/assets/images/products/product-10 (1).png'),
     product_10_image_02: require('~/assets/images/products/product-10 (2).png'),
+
+    product_11_image_01: require('~/assets/images/products/product-11 (1).png'),
+    product_11_image_02: require('~/assets/images/products/product-11 (2).png'),
+
+    product_12_image_01: require('~/assets/images/products/product-12 (1).png'),
+    product_12_image_02: require('~/assets/images/products/product-12 (2).png'),
 };
 
 export default images;

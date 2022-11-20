@@ -1,89 +1,55 @@
+import { useState, useEffect } from 'react';
 import classNames from 'classnames/bind';
-import { FiShoppingCart } from 'react-icons/fi';
 
-import images from '~/assets/images';
-import Image from '../Image';
+import { products } from '~/data';
+import ProductItem from './ProductItem';
 import styles from './Product.module.scss';
-import Button from '../Button';
 
 const cx = classNames.bind(styles);
 
-function Product({ isBestSeller = false, isNewProduct = false, title }) {
+function Product({ isBestSeller = false, isNew = false, title }) {
+    const [bestSellerProducts, setBestSellerProducts] = useState([]);
+    const [newProducts, setNewProducts] = useState([]);
+
+    useEffect(() => {
+        const getBestSellerProducts = (arr, start, end) => {
+            /* Sắp xếp mảng giảm dần theo count */
+            arr.sort((a, b) => b.count - a.count);
+
+            return arr.slice(start, end);
+        };
+
+        setBestSellerProducts(getBestSellerProducts(products, 0, 4));
+    }, []);
+
+    useEffect(() => {
+        const getNewProducts = (arr) => {
+            /* Sắp xếp mảng giảm dần theo count */
+            const listNewProduct = arr.filter((product) => product.isNewProduct === true);
+
+            if (arr.length - 1 > 8) {
+                return listNewProduct.slice(0, 8);
+            } else {
+                return listNewProduct;
+            }
+        };
+
+        setNewProducts(getNewProducts(products));
+    }, []);
+
     return (
         <div className={cx('wrapper')}>
             <h2 className={cx('title')}>{title}</h2>
             <ul className={cx('product-list', 'container')}>
-                <li className={cx('product-item')}>
-                    <div className={cx('images')}>
-                        <Image src={images.product_01_image_01} className={cx('model-image')} alt="model-img" />
-                        <Image src={images.product_01_image_02} className={cx('product-image')} alt="product-img" />
-                    </div>
+                {isBestSeller &&
+                    bestSellerProducts &&
+                    bestSellerProducts.map((bestSellerProduct) => (
+                        <ProductItem key={bestSellerProduct.id} data={bestSellerProduct} />
+                    ))}
 
-                    <div className={cx('info')}>
-                        <h5 className={cx('name')}>Áo khủng long Dinosaur 01</h5>
-                        <div className={cx('prices')}>
-                            <span className={cx('new-price')}>200.000</span>
-                            <span className={cx('old-price')}>320.000</span>
-                        </div>
-                        <Button to="/" className={cx('detail-btn')} primary small icon={<FiShoppingCart size="20" />}>
-                            XEM CHI TIẾT
-                        </Button>
-                    </div>
-                </li>
-
-                <li className={cx('product-item')}>
-                    <div className={cx('images')}>
-                        <Image src={images.product_01_image_01} className={cx('model-image')} alt="model-img" />
-                        <Image src={images.product_01_image_02} className={cx('product-image')} alt="product-img" />
-                    </div>
-
-                    <div className={cx('info')}>
-                        <h5 className={cx('name')}>Áo khủng long Dinosaur 01</h5>
-                        <div className={cx('prices')}>
-                            <span className={cx('new-price')}>200.000</span>
-                            <span className={cx('old-price')}>320.000</span>
-                        </div>
-                        <Button to="/" className={cx('detail-btn')} primary small icon={<FiShoppingCart size="20" />}>
-                            XEM CHI TIẾT
-                        </Button>
-                    </div>
-                </li>
-
-                <li className={cx('product-item')}>
-                    <div className={cx('images')}>
-                        <Image src={images.product_01_image_01} className={cx('model-image')} alt="model-img" />
-                        <Image src={images.product_01_image_02} className={cx('product-image')} alt="product-img" />
-                    </div>
-
-                    <div className={cx('info')}>
-                        <h5 className={cx('name')}>Áo khủng long Dinosaur 01</h5>
-                        <div className={cx('prices')}>
-                            <span className={cx('new-price')}>200.000</span>
-                            <span className={cx('old-price')}>320.000</span>
-                        </div>
-                        <Button to="/" className={cx('detail-btn')} primary small icon={<FiShoppingCart size="20" />}>
-                            XEM CHI TIẾT
-                        </Button>
-                    </div>
-                </li>
-
-                <li className={cx('product-item')}>
-                    <div className={cx('images')}>
-                        <Image src={images.product_01_image_01} className={cx('model-image')} alt="model-img" />
-                        <Image src={images.product_01_image_02} className={cx('product-image')} alt="product-img" />
-                    </div>
-
-                    <div className={cx('info')}>
-                        <h5 className={cx('name')}>Áo khủng long Dinosaur 01</h5>
-                        <div className={cx('prices')}>
-                            <span className={cx('new-price')}>200.000</span>
-                            <span className={cx('old-price')}>320.000</span>
-                        </div>
-                        <Button to="/" className={cx('detail-btn')} primary small icon={<FiShoppingCart size="20" />}>
-                            XEM CHI TIẾT
-                        </Button>
-                    </div>
-                </li>
+                {isNew &&
+                    newProducts &&
+                    newProducts.map((newProduct) => <ProductItem key={newProduct.id} data={newProduct} />)}
             </ul>
         </div>
     );

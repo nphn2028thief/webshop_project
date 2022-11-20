@@ -8,7 +8,8 @@ function HomePage() {
         <TabTitle title="Trang chủ">
             <Slider />
             <PolicyCard />
-            <Product title="Top sản phẩm bán chạy trong tuần" />
+            <Product isBestSeller title="Top sản phẩm bán chạy trong tuần" />
+            <Product isNew title="Sản phẩm mới" />
         </TabTitle>
     );
 }

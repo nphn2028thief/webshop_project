@@ -9,7 +9,7 @@
     left: 0;
     height: var(--header-height);
     background-color: var(--white);
-    box-shadow: var(--box-shadow);
+    transition: box-shadow 0.3s ease;
     z-index: 999;
 }
 
