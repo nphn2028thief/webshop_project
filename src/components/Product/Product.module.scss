@@ -6,6 +6,7 @@
 
     .title {
         @include flex(center, center, row);
+        width: 100%;
 
         font-weight: 600;
         letter-spacing: 1px;

@@ -1,0 +1,67 @@
+@use '../../scss/' as *;
+
+.wrapper {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 2rem;
+
+    .sidebar {
+        margin-top: 20px;
+
+        /* Filter */
+        .filter {
+            + .filter {
+                margin-top: 20px;
+            }
+
+            .title {
+                font-size: 1.8rem;
+                letter-spacing: 1px;
+                text-transform: capitalize;
+            }
+        }
+
+        .filter-list {
+            margin-top: 16px;
+
+            .filter-item {
+                @include flex(unset, center, row);
+
+                + .filter-item {
+                    margin-top: 8px;
+                }
+
+                .text {
+                    margin-left: 8px;
+                    font-size: 1.4rem;
+                    color: var(--text-color);
+                }
+            }
+        }
+        /* Filter */
+
+        .delete-filter-btn {
+            margin-top: 20px;
+            border-radius: 4px;
+            font-size: 1.4rem;
+        }
+    }
+}
+
+.content {
+    margin-top: 20px;
+
+    .product-list {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+
+        @include tablet {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @include mobile {
+            grid-template-columns: 1fr;
+        }
+    }
+}

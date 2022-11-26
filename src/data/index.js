@@ -301,3 +301,90 @@ export const products = [
         count: 300,
     },
 ];
+
+export const filterCategories = [
+    {
+        id: 1,
+        display: 'Áo thun',
+        categorySlug: 'ao-thun',
+        type: 'CATEGORY',
+    },
+    {
+        id: 2,
+        display: 'Áo sơ mi',
+        categorySlug: 'ao-so-mi',
+        type: 'CATEGORY',
+    },
+    {
+        id: 3,
+        display: 'Quần jean',
+        categorySlug: 'quan-jean',
+        type: 'CATEGORY',
+    },
+];
+
+export const filterColors = [
+    {
+        id: 1,
+        display: 'Trắng',
+        color: 'white',
+        type: 'COLOR',
+    },
+    {
+        id: 2,
+        display: 'Hồng',
+        color: 'pink',
+        type: 'COLOR',
+    },
+    {
+        id: 3,
+        display: 'Đen',
+        color: 'black',
+        type: 'COLOR',
+    },
+    {
+        id: 4,
+        display: 'Cam',
+        color: 'orange',
+        type: 'COLOR',
+    },
+    {
+        id: 5,
+        display: 'Xanh dương',
+        color: 'blue',
+        type: 'COLOR',
+    },
+];
+
+export const filterSizes = [
+    {
+        id: 1,
+        display: 'S',
+        size: 'S',
+        type: 'SIZE',
+    },
+    {
+        id: 2,
+        display: 'M',
+        size: 'M',
+        type: 'SIZE',
+    },
+    {
+        id: 3,
+        display: 'L',
+        size: 'L',
+        type: 'SIZE',
+    },
+    {
+        id: 4,
+        display: 'XL',
+        size: 'XL',
+        type: 'SIZE',
+    },
+    {
+        id: 5,
+        display: 'XXL',
+        size: 'XXL',
+        type: 'SIZE',
+    },
+];

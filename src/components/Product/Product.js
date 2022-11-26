@@ -39,8 +39,10 @@ function Product({ isBestSeller = false, isNew = false, title }) {
     }, []);
 
     return (
+        /* Nếu noMargin = true thì sẽ không có margin-top: 56px */
         <div className={cx('wrapper')}>
-            <h2 className={isNew ? cx('title', 'rainbow') : cx('title')}>
+            {/* Nếu isNew thì set title animation là cầu vồng nhấp nhảy */}
+            <h2 className={isNew ? cx('title', 'rainbow') : cx('title')} data-heading={title}>
                 {title}
                 {isNew && (
                     <span className={cx('new', 'rainbow')}>
@@ -48,7 +50,11 @@ function Product({ isBestSeller = false, isNew = false, title }) {
                     </span>
                 )}
             </h2>
+
             <ul className={cx('product-list', 'container')}>
+                {/* Nếu là isBestSeller thì sẽ chỉ render ra số lượng sản phẩm theo hàm getBestSellerProducts*/}
+                {/* Nếu là isNew thì sẽ chỉ render ra số lượng sản phẩm theo hàm getNewProducts*/}
+                {/* Mặc định sẽ render ra tất cả sản phẩm theo dữ liệu giả */}
                 {isBestSeller && bestSellerProducts
                     ? bestSellerProducts.map((bestSellerProduct) => (
                           <ProductItem key={bestSellerProduct.id} data={bestSellerProduct} />
