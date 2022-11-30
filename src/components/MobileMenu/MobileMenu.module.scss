@@ -46,26 +46,6 @@
     }
 }
 
-.content {
-    @include flex(unset, unset, column);
-
-    width: 60%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    padding: 16px 0 0 32px;
-    background-color: var(--white);
-    transform: translateX(-100%);
-    transition: transform 0.3s linear;
-    overflow: auto;
-    z-index: 101;
-
-    @include mobile {
-        width: 80%;
-    }
-}
-
 .info {
     display: grid;
     grid-template-columns: 1fr;

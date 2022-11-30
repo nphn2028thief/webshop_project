@@ -9,13 +9,14 @@ import styles from './MobileMenu.module.scss';
 import Image from '../Image';
 import { useStore } from '~/hooks';
 import { setIsLogin } from '~/store/actions';
+import MobileMenuWrapper from '../MobileMenuWrapper';
 
 const cx = classNames.bind(styles);
 
 function MobileMenu() {
     const [width, setWidth] = useState(window.innerWidth);
     const checkboxRef = useRef();
-    const contentRef = useRef();
+
     const { pathname } = useLocation();
 
     const active = navMenus.findIndex((e) => e.to === pathname);
@@ -52,7 +53,7 @@ function MobileMenu() {
 
             <label htmlFor={styles['mobile-menu-input']} className={cx('overlay')}></label>
 
-            <div ref={contentRef} className={cx('content')}>
+            <MobileMenuWrapper className={cx('content')}>
                 {isLogin && (
                     <div className={cx('info')}>
                         <Image src="" className={cx('avatar')} alt="avatar" />
@@ -104,7 +105,7 @@ function MobileMenu() {
                         </div>
                     )}
                 </div>
-            </div>
+            </MobileMenuWrapper>
         </>
     );
 }

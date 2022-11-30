@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames/bind';
 
 import { filterCategories, filterColors, filterSizes, products as productsData } from '~/data';
@@ -6,6 +6,7 @@ import Filter from '../Filter';
 import Button from '../Button';
 import styles from './Catalog.module.scss';
 import ProductItem from '../Product/ProductItem';
+import MobileMenuWrapper from '../MobileMenuWrapper';
 
 const cx = classNames.bind(styles);
 
@@ -17,6 +18,8 @@ function Catalog() {
     });
 
     const [products, setProducts] = useState(productsData);
+
+    const checkBoxRef = useRef();
 
     const handleChange = (type, slug) => {
         const isChecked =
@@ -72,18 +75,6 @@ function Catalog() {
             });
         }
 
-        // if (checked.categories.length > 0) {
-        //     t = t.filter((e) => checked.categories.includes(e.categorySlug));
-        // }
-
-        // if (checked.colors.length > 0) {
-        //     console.log('Category has length > 0');
-        // }
-
-        // if (checked.sizes.length > 0) {
-        //     console.log('Category has length > 0');
-        // }
-
         setProducts(t);
     }, [checked.categories, checked.colors, checked.sizes]);
 
@@ -92,18 +83,27 @@ function Catalog() {
     }, [updateProductList]);
 
     const handleReset = () => {
-        setChecked({
-            categories: [],
-            color: [],
-            sizes: [],
-        });
+        // setChecked({
+        //     categories: [],
+        //     color: [],
+        //     sizes: [],
+        // });
+        //Error
     };
 
-    console.log(checked);
+    // console.log(checked);
 
     return (
         <div className={cx('wrapper', 'container')}>
-            <div className={cx('sidebar')}>
+            <label className={cx('filter-btn')} htmlFor={styles['filter-mobile-menu-input']}>
+                MỞ BỘ LỌC
+            </label>
+
+            <input ref={checkBoxRef} type="checkbox" id={cx('filter-mobile-menu-input')} />
+
+            <label htmlFor={styles['filter-mobile-menu-input']} className={cx('overlay')}></label>
+
+            <MobileMenuWrapper className={cx('sidebar')}>
                 <Filter
                     title="danh mục sản phẩm"
                     data={filterCategories}
@@ -118,7 +118,7 @@ function Catalog() {
                 <Button outline small className={cx('delete-filter-btn')} onClick={handleReset}>
                     XOÁ BỘ LỌC
                 </Button>
-            </div>
+            </MobileMenuWrapper>
 
             <div className={cx('content')}>
                 <ul className={cx('product-list')}>
