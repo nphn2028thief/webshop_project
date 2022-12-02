@@ -13,7 +13,6 @@
     transform: translateX(-100%);
     transition: transform 0.3s linear;
     overflow: auto;
-    z-index: 101;
 
     @include mobile {
         width: 80%;
