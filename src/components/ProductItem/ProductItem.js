@@ -5,9 +5,9 @@ import Image from '../Image';
 
 const cx = classNames.bind(styles);
 
-function ProductItem({ data, amount }) {
+function ProductItem({ data }) {
     return (
-        <Link to="/catalogs/:slug" className={cx('product-item')}>
+        <Link to="/products/:slug" className={cx('product-item')}>
             <Image src={data.image} className={cx('image')} alt="product-img" />
             <div className={cx('info')}>
                 <h4 className={cx('name')}>{data.name}</h4>

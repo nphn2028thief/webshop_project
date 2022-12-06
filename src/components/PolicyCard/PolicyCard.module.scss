@@ -1,4 +1,4 @@
-@use '../scss/' as *;
+@use '../../scss/' as *;
 
 .wrapper {
     @include flex(space-between, center, unset);

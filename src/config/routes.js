@@ -1,7 +1,7 @@
 const routes = {
     home: '/',
-    catalog: '/catalogs',
-    product: '/catalogs/:slug',
+    product: '/products',
+    productDetail: '/products/:slug',
     cart: '/cart',
     login: '/account/login',
 };

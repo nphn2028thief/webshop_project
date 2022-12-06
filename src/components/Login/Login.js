@@ -1,5 +1,5 @@
-import { useRef, useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import classNames from 'classnames/bind';
 
 import styles from './Login.module.scss';
@@ -12,6 +12,7 @@ const cx = classNames.bind(styles);
 
 function Login() {
     const navigate = useNavigate();
+    // eslint-disable-next-line no-unused-vars
     const [state, dispatch] = useStore();
     const [clicked, setClicked] = useState(false);
 

@@ -12,11 +12,13 @@ import MobileMenuWrapper from '../MobileMenuWrapper';
 const cx = classNames.bind(styles);
 
 function Catalog() {
-    const [checked, setChecked] = useState({
+    const initState = {
         categories: [],
         colors: [],
         sizes: [],
-    });
+    };
+
+    const [checked, setChecked] = useState(initState);
 
     const [products, setProducts] = useState(productsData);
 
@@ -103,12 +105,7 @@ function Catalog() {
     }, [updateProductList]);
 
     const handleReset = () => {
-        // setChecked({
-        //     categories: [],
-        //     color: [],
-        //     sizes: [],
-        // });
-        //Error
+        setChecked(initState);
     };
 
     // console.log(checked);

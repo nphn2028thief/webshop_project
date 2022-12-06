@@ -14,7 +14,7 @@ function ProductItem({ data }) {
     return (
         <>
             <li key={data.id} className={cx('product-item')}>
-                <Link to={`/catalog/${data.slug}`}>
+                <Link to={`/products/${data.slug}`}>
                     <div className={cx('images')}>
                         <Image src={data.modelImage} className={cx('model-image')} alt="model-img" />
                         <Image src={data.image} className={cx('product-image')} alt="product-img" />
