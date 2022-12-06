@@ -42,6 +42,7 @@ function Product({ isBestSeller = false, isNew = false, title }) {
         /* Nếu noMargin = true thì sẽ không có margin-top: 56px */
         <div className={cx('wrapper')}>
             {/* Nếu isNew thì set title animation là cầu vồng nhấp nhảy */}
+
             <h2 className={isNew ? cx('title', 'rainbow') : cx('title')} data-heading={title}>
                 {title}
                 {isNew && (
@@ -55,6 +56,7 @@ function Product({ isBestSeller = false, isNew = false, title }) {
                 {/* Nếu là isBestSeller thì sẽ chỉ render ra số lượng sản phẩm theo hàm getBestSellerProducts*/}
                 {/* Nếu là isNew thì sẽ chỉ render ra số lượng sản phẩm theo hàm getNewProducts*/}
                 {/* Mặc định sẽ render ra tất cả sản phẩm theo dữ liệu giả */}
+
                 {isBestSeller && bestSellerProducts
                     ? bestSellerProducts.map((bestSellerProduct) => (
                           <ProductItem key={bestSellerProduct.id} data={bestSellerProduct} />

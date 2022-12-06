@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
+import ReactPaginate from 'react-paginate';
 import classNames from 'classnames/bind';
 
 import { filterCategories, filterColors, filterSizes, products as productsData } from '~/data';
@@ -20,6 +21,25 @@ function Catalog() {
     const [products, setProducts] = useState(productsData);
 
     const checkBoxRef = useRef();
+
+    /* Begin: Paginate */
+    const [currentItem, setCurrentItem] = useState([]);
+    const [pageCount, setPageCount] = useState(0);
+    const [itemOffset, setItemOffset] = useState(0);
+    const itemPerPage = 9;
+
+    useEffect(() => {
+        const endOffset = itemOffset + itemPerPage;
+        setCurrentItem(products.slice(itemOffset, endOffset));
+        setPageCount(Math.ceil(products.length / itemPerPage));
+    }, [itemOffset, products]);
+
+    const handlePageClick = (e) => {
+        const newOffset = (e.selected * itemPerPage) % products.length;
+        setItemOffset(newOffset);
+        window.scrollTo(0, 0);
+    };
+    /* End: Paginate */
 
     const handleChange = (type, slug) => {
         const isChecked =
@@ -122,10 +142,25 @@ function Catalog() {
 
             <div className={cx('content')}>
                 <ul className={cx('product-list')}>
-                    {products.map((product) => (
+                    {currentItem.map((product) => (
                         <ProductItem key={product.id} data={product} />
                     ))}
                 </ul>
+
+                <ReactPaginate
+                    previousLabel="< Trước"
+                    nextLabel="Sau >"
+                    breakLabel="..."
+                    onPageChange={handlePageClick}
+                    pageRangeDisplayed={5}
+                    pageCount={pageCount}
+                    renderOnZeroPageCount={null}
+                    containerClassName={cx('pagination-container')}
+                    pageLinkClassName={cx('page-link')}
+                    previousLinkClassName={cx('page-link')}
+                    nextLinkClassName={cx('page-link')}
+                    activeLinkClassName={cx('active')}
+                />
             </div>
         </div>
     );
