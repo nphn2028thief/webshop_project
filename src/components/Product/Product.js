@@ -10,7 +10,7 @@ function Product({ title, isNew = false, data }) {
         <div className={cx('wrapper')}>
             {/* Nếu isNew thì set title animation là cầu vồng nhấp nhảy */}
 
-            <h2 className={isNew ? cx('title', 'rainbow') : cx('title')} data-heading={title}>
+            <h2 className={isNew ? cx('title', 'rainbow') : cx('title')}>
                 {title}
                 {isNew && (
                     <span className={cx('new', 'rainbow')}>
